@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.mrmike:ok2curl:0.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mrmike/ok2curl/0.7.0/3a9dfd6285c4e96c16b145bd1c2bd8c42237e497/ok2curl-0.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mrmike/ok2curl/0.7.0/c4e6a35e360b498e2d2fbd83da07602c71633b67/ok2curl-0.7.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mrmike/ok2curl/0.7.0/e3d5e3fa88cc6ba172c3ec67637d01aa042c02e6/ok2curl-0.7.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
