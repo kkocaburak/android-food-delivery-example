@@ -5,5 +5,6 @@
     <string name="common_error_network_connection">Netzwerkfehler, bitte versuchen Sie es erneut.</string>
     <string name="common_error_unknown">Unbekannter Fehler.</string>
     <string name="common_error_timeout">Timeout-Fehler.</string>
+    <string name="minute_text">min</string>
     <!-- Common Resources -->
 </resources>
