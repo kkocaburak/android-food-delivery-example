@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="restaurant"
+            type="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardElevation="16dp"
+        app:cardCornerRadius="24dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="12dp">
+
+            <FrameLayout
+                android:id="@+id/frame_layout_restaurant_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/image_view_restaurant"
+                    android:layout_width="match_parent"
+                    android:layout_height="164dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:setImageResourceId="@{restaurant.restaurantImageResId}"
+                    tools:src="@drawable/restaurant_image" />
+
+                <ImageView
+                    android:id="@+id/image_view_restaurant_favorite"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="end|top"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:setImageResourceId="@{restaurant.restaurantFavoriteIconResId}"
+                    tools:src="@drawable/favorite_not" />
+
+                <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
+                    android:id="@+id/text_image_restaurant_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/white"
+                    app:layout_constraintStart_toEndOf="@+id/text_image_restaurant_min_price"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
+                    app:componentImageResId="@drawable/rating"
+                    app:setComponentText="@{restaurant.restaurantRating}"
+                    app:setComponentTextColor="@{restaurant.restaurantRatingColorId}" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/text_view_restaurant_name"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:text="@{restaurant.restaurantName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frame_layout_restaurant_image"
+                tools:text="Sushico" />
+
+            <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
+                android:id="@+id/text_image_restaurant_minimum_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
+                app:componentImageResId="@drawable/min_value"
+                app:setComponentText="@{restaurant.minimumCost}" />
+
+            <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
+                android:id="@+id/text_image_restaurant_delivery_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@+id/text_image_restaurant_minimum_cost"
+                app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
+                app:componentImageResId="@drawable/courier"
+                app:setComponentText="@{restaurant.deliveryCost}" />
+
+            <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
+                android:id="@+id/text_image_restaurant_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_restaurant_name"
+                app:componentImageResId="@drawable/duration"
+                app:setComponentText="@{restaurant.restaurantDeliveryDuration}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

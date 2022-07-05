@@ -15,21 +15,17 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.bkarakoca.fooddeliveryapp.scene.splash.SplashActivity"
-            android:noHistory="true"
+            android:name="com.bkarakoca.fooddeliveryapp.scene.main.MainActivity"
             android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme"
             android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity
-            android:name="com.bkarakoca.fooddeliveryapp.scene.main.MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/AppTheme" />
 
     </application>
 

@@ -48,6 +48,7 @@ ext {
             mockk                : '1.12.0',
             material             : '1.6.1',
             preference           : '1.1.1',
+            roomVersion          : '2.4.2',
             retrofit             : '2.9.0',
             robolectric          : '4.6.1',
             spotless             : '6.1.0',
@@ -129,6 +130,19 @@ ext {
 
             commonDebug = [
                     "androidx.fragment:fragment-testing:$version.fragmentTesting"
+            ],
+
+            roomImplementation = [
+                    "androidx.room:room-runtime:$version.roomVersion",
+                    "androidx.room:room-ktx:$version.roomVersion"
+            ],
+
+            roomKapt = [
+                    "androidx.room:room-compiler:$version.roomVersion"
+            ],
+
+            roomAnnotationProcessor = [
+                    "androidx.room:room-compiler:$version.roomVersion"
             ]
     ]
 

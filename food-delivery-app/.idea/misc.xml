@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/background_button.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/main_background.xml" value="0.136" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_splash_main.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_battery_list.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/item_battery.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/item_restaurant.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/view_text_with_icon.xml" value="0.18885869565217392" />
       </map>
     </option>
   </component>

@@ -23,4 +23,11 @@
     <color name="soft_grey">#E5E5E5</color>
     <color name="vibrant_blue">#003dff</color>
     <color name="almost_black_60">#6008090a</color>
+
+    <!--  Restaurant Rating Colors  -->
+    <color name="restaurant_black_color">#6008090a</color>
+    <color name="restaurant_gray_color">#3D4043</color>
+    <color name="restaurant_orange_color">#FF5C00</color>
+    <color name="restaurant_low_green_color">#228B22</color>
+    <color name="restaurant_green_color">#7CFC00</color>
 </resources>

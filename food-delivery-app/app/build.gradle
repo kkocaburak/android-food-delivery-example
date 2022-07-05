@@ -103,8 +103,11 @@ dependencies {
     implementation lifecycle
     implementation network
     implementation dagger
+    implementation roomImplementation
 
     kapt commonKapt
+    kapt roomKapt
+    annotationProcessor roomAnnotationProcessor
     kaptTest commonKapt
     debugImplementation commonDebug
     testImplementation commonTest

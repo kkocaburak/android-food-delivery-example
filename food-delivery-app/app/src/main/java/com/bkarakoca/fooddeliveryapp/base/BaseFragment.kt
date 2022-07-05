@@ -8,14 +8,16 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import com.bkarakoca.fooddeliveryapp.internal.extension.injectVM
+import com.bkarakoca.fooddeliveryapp.BR
 import com.bkarakoca.fooddeliveryapp.internal.extension.showPopup
 import com.bkarakoca.fooddeliveryapp.navigation.NavigationCommand
+import java.lang.reflect.ParameterizedType
 
-abstract class BaseFragment<B : ViewDataBinding> :
+abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> :
     Fragment() {
 
     lateinit var binder: B
@@ -23,17 +25,21 @@ abstract class BaseFragment<B : ViewDataBinding> :
     @get:LayoutRes
     abstract val layoutId: Int
 
-    open fun initialize() {
-        // Do nothing in here. Child classes should implement when necessary
+    @Suppress("UNCHECKED_CAST")
+    protected val viewModel by lazyThreadSafetyNone {
+        val persistentViewModelClass = (javaClass.genericSuperclass as ParameterizedType)
+            .actualTypeArguments[0] as Class<VM>
+        return@lazyThreadSafetyNone ViewModelProvider(this)[persistentViewModelClass]
     }
+
+    // Do nothing in here. Child classes should implement when necessary
+    abstract fun initialize()
 
     open fun setListeners() {
         // Do nothing in here. Child classes should implement when necessary
     }
 
-    open fun setReceivers() {
-        // Do nothing in here. Child classes should implement when necessary
-    }
+    abstract fun setReceivers()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +47,9 @@ abstract class BaseFragment<B : ViewDataBinding> :
         savedInstanceState: Bundle?
     ): View? {
         binder = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        binder.lifecycleOwner = viewLifecycleOwner
+        binder.setVariable(BR.viewModel, viewModel)
+
         return binder.root
     }
 
