@@ -9,10 +9,12 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_splash_main.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_battery_list.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/fragment_restaurant_detail.xml" value="0.18885869565217392" />
         <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/item_battery.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/item_restaurant.xml" value="0.25" />
         <entry key="app/src/main/res/layout/view_text_with_icon.xml" value="0.18885869565217392" />
+        <entry key="app/src/main/res/layout/view_text_with_small_image.xml" value="0.18885869565217392" />
       </map>
     </option>
   </component>

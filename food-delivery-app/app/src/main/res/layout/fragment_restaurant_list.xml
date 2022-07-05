@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.bkarakoca.fooddeliveryapp.scene.restaurant.FRRestaurantListVM" />
+            type="com.bkarakoca.fooddeliveryapp.scene.restaurant.listing.FRRestaurantListVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

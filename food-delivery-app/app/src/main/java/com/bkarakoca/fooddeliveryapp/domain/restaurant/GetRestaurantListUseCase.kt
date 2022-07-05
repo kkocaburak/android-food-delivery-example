@@ -1,6 +1,5 @@
 package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
-import android.content.Context
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.data.repository.restaurant.RestaurantRepository
 import com.bkarakoca.fooddeliveryapp.data.service.local.restaurant.FavoriteRestaurantEntity
@@ -13,14 +12,10 @@ import javax.inject.Inject
 
 class GetRestaurantListUseCase @Inject constructor(
     private val restaurantRepository: RestaurantRepository
-) : FlowUseCase<GetRestaurantListUseCase.Params, RestaurantListUIModel>() {
+) : FlowUseCase<Unit, RestaurantListUIModel>() {
 
-    data class Params(
-        val context: Context
-    )
-
-    override suspend fun execute(params: Params): Flow<RestaurantListUIModel> {
-        val restaurantListFlow = flowOf(restaurantRepository.fetchRestaurantList(params.context))
+    override suspend fun execute(params: Unit): Flow<RestaurantListUIModel> {
+        val restaurantListFlow = flowOf(restaurantRepository.fetchRestaurantList())
         val favoriteRestaurantIdListFlow = flowOf(restaurantRepository.fetchFavoriteRestaurantIdList())
 
         return restaurantListFlow.zip(

@@ -12,20 +12,21 @@ class RestaurantListMapper @Inject constructor(
 
     fun mapResponseToUIModel(responseModel: RestaurantListResponseModel): RestaurantListUIModel {
         return RestaurantListUIModel(
-            restaurantList = responseModel.restaurantList.map {
+            restaurantList = responseModel.restaurantList.mapIndexed { index, item ->
                 RestaurantUIModel(
-                    restaurantImageResId = it.getRestaurantImageResId(),
-                    restaurantRatingColorId = it.getRatingColor(),
-                    restaurantName = it.name.toSafeString(),
-                    restaurantStatusType = it.getRestaurantStatus(),
-                    bestMatch = it.sortingValues?.bestMatch.toSafeString(),
-                    newest = it.sortingValues?.newest.toSafeString(),
-                    restaurantRating = it.sortingValues?.ratingAverage.toSafeString(),
-                    restaurantDeliveryDuration = mapDurationText(it.getDeliveryDurationText()),
-                    restaurantPopularity = it.sortingValues?.popularity.toSafeString(),
-                    averageProductPrice = it.sortingValues?.averageProductPrice.toSafeString(),
-                    deliveryCost = it.getDeliveryCostText(),
-                    minimumCost = it.getMinimumCostText()
+                    restaurantId = index.toLong(),
+                    restaurantImageResId = item.getRestaurantImageResId(),
+                    restaurantRatingColorId = item.getRatingColor(),
+                    restaurantName = item.name.toSafeString(),
+                    restaurantStatusType = item.getRestaurantStatus(),
+                    bestMatch = item.sortingValues?.bestMatch.toSafeString(),
+                    newest = item.sortingValues?.newest.toSafeString(),
+                    restaurantRating = item.sortingValues?.ratingAverage.toSafeString(),
+                    restaurantDeliveryDuration = mapDurationText(item.getDeliveryDurationText()),
+                    restaurantPopularity = item.sortingValues?.popularity.toSafeString(),
+                    averageProductPrice = item.sortingValues?.averageProductPrice.toSafeString(),
+                    deliveryCost = item.getDeliveryCostText(),
+                    minimumCost = item.getMinimumCostText()
                 )
             }.filter { restaurant ->
                 restaurant.restaurantName.isNotBlank()

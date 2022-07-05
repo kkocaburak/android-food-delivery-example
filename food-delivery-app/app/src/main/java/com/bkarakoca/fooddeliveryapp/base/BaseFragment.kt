@@ -13,6 +13,7 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.bkarakoca.fooddeliveryapp.BR
+import com.bkarakoca.fooddeliveryapp.internal.extension.observeNonNull
 import com.bkarakoca.fooddeliveryapp.internal.extension.showPopup
 import com.bkarakoca.fooddeliveryapp.navigation.NavigationCommand
 import java.lang.reflect.ParameterizedType
@@ -35,9 +36,7 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> :
     // Do nothing in here. Child classes should implement when necessary
     abstract fun initialize()
 
-    open fun setListeners() {
-        // Do nothing in here. Child classes should implement when necessary
-    }
+    abstract fun setListeners()
 
     abstract fun setReceivers()
 
@@ -55,10 +54,19 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeNavigation()
 
         initialize()
         setListeners()
         setReceivers()
+    }
+
+    private fun observeNavigation() {
+        viewModel.navigation.observeNonNull(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { command ->
+                handleNavigation(command)
+            }
+        }
     }
 
     open fun handleNavigation(command: NavigationCommand) {
