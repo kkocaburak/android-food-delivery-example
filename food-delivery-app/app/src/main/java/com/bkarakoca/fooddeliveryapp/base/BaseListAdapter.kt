@@ -15,7 +15,7 @@ abstract class BaseListAdapter<VB : ViewDataBinding, T : ListAdapterItem>(
     @get:LayoutRes
     protected abstract val layoutRes: Int
 
-    protected abstract fun bind(binding: VB, item: T)
+    protected abstract fun bind(binding: VB, item: T, index: Int)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<VB> {
         val binding = DataBindingUtil.inflate<VB>(
@@ -29,6 +29,6 @@ abstract class BaseListAdapter<VB : ViewDataBinding, T : ListAdapterItem>(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<VB>, position: Int) {
-        bind(holder.binding, getItem(position))
+        bind(holder.binding, getItem(position), position)
     }
 }

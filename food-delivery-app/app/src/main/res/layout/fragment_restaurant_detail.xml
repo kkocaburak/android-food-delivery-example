@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.bkarakoca.fooddeliveryapp.scene.restaurant.detail.FRRestaurantDetailVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_background">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_restaurant"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_view_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:setImageResourceId="@{viewModel.restaurantUIModel.restaurantImageResId}"
+                tools:src="@drawable/restaurant_image" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/text_view_restaurant_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.restaurantUIModel.restaurantName}"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/card_view_restaurant"
+            tools:text="@string/app_name" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_restaurant_numeral_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_restaurant_name">
+
+            <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
+                android:id="@+id/text_image_restaurant_delivery_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                app:componentImageResId="@drawable/courier"
+                app:setComponentText="@{viewModel.restaurantUIModel.deliveryCost}" />
+
+            <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
+                android:id="@+id/text_image_restaurant_min_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                app:componentImageResId="@drawable/min_value"
+                app:setComponentText="@{viewModel.restaurantUIModel.minimumCost}" />
+
+            <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
+                android:id="@+id/text_image_restaurant_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                app:componentImageResId="@drawable/rating"
+                app:setComponentText="@{viewModel.restaurantUIModel.restaurantRating}"
+                app:setComponentTextColor="@{viewModel.restaurantUIModel.restaurantRatingColorId}" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/menu_text"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_restaurant_numeral_info"
+            tools:text="@string/menu_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

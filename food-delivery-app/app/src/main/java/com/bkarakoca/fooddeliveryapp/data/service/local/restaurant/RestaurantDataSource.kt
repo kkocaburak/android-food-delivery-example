@@ -1,21 +1,20 @@
 package com.bkarakoca.fooddeliveryapp.data.service.local.restaurant
 
-import android.content.Context
 import com.bkarakoca.fooddeliveryapp.data.model.RestaurantListResponseModel
+import com.bkarakoca.fooddeliveryapp.internal.util.ResourceProvider
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
 import javax.inject.Inject
 
 class RestaurantDataSource @Inject constructor(
-    private val restaurantDAO: RestaurantDAO
+    private val restaurantDAO: RestaurantDAO,
+    private val resourceProvider: ResourceProvider
 ) {
-    fun fetchRestaurantList(context: Context): RestaurantListResponseModel {
+    fun fetchRestaurantList(): RestaurantListResponseModel {
         var jsonString: String? = null
         try {
-            jsonString = context.assets.open("restaurant_list.json")
-                .bufferedReader()
-                .use { it.readText() }
+            jsonString = resourceProvider.getAsset("restaurant_list.json")
         } catch (ioException: IOException) {
             // TODO : catch
             println(ioException.message)
@@ -26,6 +25,18 @@ class RestaurantDataSource @Inject constructor(
     }
 
     fun fetchFavoriteRestaurantIdList(): List<FavoriteRestaurantEntity> {
-        return restaurantDAO.fetchFavoriteRestaurantIdList()
+        return restaurantDAO.fetchFavoriteRestaurantIdList() ?: listOf()
+    }
+
+    fun insertFavoriteRestaurantIdList(restaurantName: String) {
+        restaurantDAO.insertFavoriteRestaurant(
+            FavoriteRestaurantEntity(restaurantName = restaurantName)
+        )
+    }
+
+    fun deleteFavoriteRestaurantIdList(restaurantName: String) {
+        restaurantDAO.deleteFavoriteRestaurant(
+            FavoriteRestaurantEntity(restaurantName = restaurantName)
+        )
     }
 }

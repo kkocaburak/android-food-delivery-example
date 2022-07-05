@@ -6,6 +6,23 @@
 
     <fragment
         android:id="@+id/FRRestaurantList"
-        android:name="com.bkarakoca.fooddeliveryapp.scene.restaurant.FRRestaurantList"
-        android:label="FRRestaurantList" />
+        android:name="com.bkarakoca.fooddeliveryapp.scene.restaurant.listing.FRRestaurantList"
+        android:label="FRRestaurantList" >
+        <action
+            android:id="@+id/toFRRestaurantDetail"
+            app:destination="@id/FRRestaurantDetail">
+
+            <argument
+                android:name="restaurantUIModel"
+                app:argType="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/FRRestaurantDetail"
+        android:name="com.bkarakoca.fooddeliveryapp.scene.restaurant.detail.FRRestaurantDetail"
+        android:label="FRRestaurantDetail">
+        <argument
+            android:name="restaurantUIModel"
+            app:argType="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel" />
+    </fragment>
 </navigation>

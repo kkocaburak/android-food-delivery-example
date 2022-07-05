@@ -28,12 +28,14 @@ internal class RestaurantModule {
         RestaurantRepositoryImpl(restaurantDataSource, restaurantListMapper)
 
     @Provides
+    @Singleton
     fun provideRestaurantDatabase(@ApplicationContext context : Context) =
         Room.databaseBuilder(context, RestaurantDataBase::class.java, "favoriteRestaurant")
             .fallbackToDestructiveMigration()
             .build()
 
     @Provides
+    @Singleton
     fun provideRestaurantDAO(appDatabase: RestaurantDataBase): RestaurantDAO {
         return appDatabase.restaurantDAO()
     }

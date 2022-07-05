@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "favoriteRestaurant")
 data class FavoriteRestaurantEntity(
     @PrimaryKey(autoGenerate = true)
-    val primaryKeyId: Int,
+    val primaryKeyId: Int? = null,
     val restaurantName: String,
 )

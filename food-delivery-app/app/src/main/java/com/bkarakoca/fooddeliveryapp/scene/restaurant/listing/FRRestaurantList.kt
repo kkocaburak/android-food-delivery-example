@@ -1,4 +1,4 @@
-package com.bkarakoca.fooddeliveryapp.scene.restaurant
+package com.bkarakoca.fooddeliveryapp.scene.restaurant.listing
 
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.base.BaseFragment
@@ -16,7 +16,19 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
     lateinit var restaurantAdapter: AdapterRestaurantList
 
     override fun initialize() {
-        viewModel.initializeVM(requireContext())
+        viewModel.initializeVM()
+    }
+
+    override fun setListeners() {
+        restaurantAdapter.apply {
+            setOnRestaurantClickListener { restaurantUIModel ->
+                viewModel.onRestaurantClicked(restaurantUIModel)
+            }
+
+            setOnRestaurantFavoriteClickListener { shouldRestaurantFavorite, restaurantName ->
+                viewModel.handleFavoriteRestaurant(shouldRestaurantFavorite, restaurantName)
+            }
+        }
     }
 
     override fun setReceivers() {

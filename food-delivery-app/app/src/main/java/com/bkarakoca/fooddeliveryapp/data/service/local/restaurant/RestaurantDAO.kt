@@ -5,13 +5,13 @@ import androidx.room.*
 @Dao
 interface RestaurantDAO {
 
-    @Insert
-    fun insertFavoriteRestaurant(restaurantEntity: FavoriteRestaurantEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertFavoriteRestaurant(restaurantEntity: FavoriteRestaurantEntity): Long
 
     @Delete
     fun deleteFavoriteRestaurant(restaurantEntity: FavoriteRestaurantEntity)
 
     @Query("Select * from favoriteRestaurant")
-    fun fetchFavoriteRestaurantIdList(): List<FavoriteRestaurantEntity> = listOf()
+    fun fetchFavoriteRestaurantIdList(): List<FavoriteRestaurantEntity>?
 
 }

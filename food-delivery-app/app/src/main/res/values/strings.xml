@@ -6,6 +6,7 @@
     <string name="common_error_unknown">Unknown error.</string>
     <string name="common_error_timeout">Timeout error.</string>
     <string name="minute_text">min</string>
+    <string name="menu_text">Menu</string>
     <!-- Common Resources -->
 
 </resources>
