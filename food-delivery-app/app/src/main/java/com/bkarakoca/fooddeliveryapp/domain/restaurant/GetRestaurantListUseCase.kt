@@ -1,8 +1,6 @@
 package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
-import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.data.repository.restaurant.RestaurantRepository
-import com.bkarakoca.fooddeliveryapp.data.service.local.restaurant.FavoriteRestaurantEntity
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListUIModel
 import com.bkarakoca.fooddeliveryapp.internal.util.flow.FlowUseCase
 import kotlinx.coroutines.flow.Flow
@@ -15,29 +13,19 @@ class GetRestaurantListUseCase @Inject constructor(
 ) : FlowUseCase<Unit, RestaurantListUIModel>() {
 
     override suspend fun execute(params: Unit): Flow<RestaurantListUIModel> {
-        val restaurantListFlow = flowOf(restaurantRepository.fetchRestaurantList())
-        val favoriteRestaurantIdListFlow = flowOf(restaurantRepository.fetchFavoriteRestaurantIdList())
+        val restaurantListRoomFlow = flowOf(restaurantRepository.fetchRestaurantListFromRoom())
+        val restaurantListLocalFlow = flowOf(restaurantRepository.fetchRestaurantListFromLocal())
 
-        return restaurantListFlow.zip(
-            favoriteRestaurantIdListFlow
-        ) { restaurantListUIModel, favoriteRestaurantIdList ->
-            mapFavoriteRestaurants(restaurantListUIModel, favoriteRestaurantIdList)
-        }
-    }
-
-    private fun mapFavoriteRestaurants(
-        restaurantListUIModel: RestaurantListUIModel,
-        favoriteRestaurantIdList: List<FavoriteRestaurantEntity>
-    ): RestaurantListUIModel {
-        favoriteRestaurantIdList.forEach { favoriteRestaurant ->
-            restaurantListUIModel.restaurantList.find { restaurantUIModel ->
-                restaurantUIModel.restaurantName == favoriteRestaurant.restaurantName
-            }?.apply {
-                isRestaurantFavorite = true
-                restaurantFavoriteIconResId = R.drawable.favorite
+        return restaurantListRoomFlow.zip(
+            restaurantListLocalFlow
+        ) { restaurantListRoom, restaurantListLocal ->
+            if (restaurantListRoom?.isNullOrEmpty() != true) {
+                RestaurantListUIModel(restaurantListRoom)
+            } else {
+                restaurantRepository.insertRestaurantListUIModel(restaurantListLocal)
+                RestaurantListUIModel(restaurantListLocal)
             }
         }
-        return restaurantListUIModel
     }
 
 }

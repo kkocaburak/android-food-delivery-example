@@ -17,6 +17,15 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
 
     override fun initialize() {
         viewModel.initializeVM()
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        binder.recyclerviewRestaurant.apply {
+            adapter = restaurantAdapter
+            setHasFixedSize(true)
+            itemAnimator?.changeDuration = 0
+        }
     }
 
     override fun setListeners() {
@@ -25,16 +34,16 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
                 viewModel.onRestaurantClicked(restaurantUIModel)
             }
 
-            setOnRestaurantFavoriteClickListener { shouldRestaurantFavorite, restaurantName ->
-                viewModel.handleFavoriteRestaurant(shouldRestaurantFavorite, restaurantName)
+            setOnRestaurantFavoriteClickListener { restaurantUIModel ->
+                viewModel.handleFavoriteRestaurant(restaurantUIModel)
             }
         }
     }
 
     override fun setReceivers() {
-        observe(viewModel.restaurantListUIModel) {
-            binder.recyclerviewRestaurant.adapter = restaurantAdapter.apply {
-                submitList(it.restaurantList)
+        observe(viewModel.restaurantListUIModel) { uiModel ->
+            uiModel?.restaurantList?.let { restaurantList ->
+                restaurantAdapter.submitList(ArrayList(restaurantList))
             }
         }
     }

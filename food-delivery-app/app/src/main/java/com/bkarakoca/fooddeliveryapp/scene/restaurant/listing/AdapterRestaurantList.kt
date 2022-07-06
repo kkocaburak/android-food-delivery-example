@@ -10,8 +10,8 @@ import javax.inject.Inject
 class AdapterRestaurantList @Inject constructor() :
     BaseListAdapter<ItemRestaurantBinding, RestaurantUIModel>() {
 
-    var onRestaurantClick: ((RestaurantUIModel) -> Unit)? = null
-    var onRestaurantFavoriteClick: ((Boolean, String) -> Unit)? = null
+    private var onRestaurantClick: ((RestaurantUIModel) -> Unit)? = null
+    private var onRestaurantFavoriteClick: ((RestaurantUIModel) -> Unit)? = null
 
     override val layoutRes get() = R.layout.item_restaurant
 
@@ -25,7 +25,7 @@ class AdapterRestaurantList @Inject constructor() :
         }
 
         binding.imageViewRestaurantFavorite.setOnClickListener {
-            onRestaurantFavoriteClick?.invoke(item.isRestaurantFavorite.not(), item.restaurantName)
+            onRestaurantFavoriteClick?.invoke(item)
         }
     }
 
@@ -33,15 +33,7 @@ class AdapterRestaurantList @Inject constructor() :
         this.onRestaurantClick = onRestaurantClick
     }
 
-    fun setOnRestaurantFavoriteClickListener(onRestaurantFavoriteClick: ((Boolean, String) -> Unit)?) {
+    fun setOnRestaurantFavoriteClickListener(onRestaurantFavoriteClick: ((RestaurantUIModel) -> Unit)?) {
         this.onRestaurantFavoriteClick = onRestaurantFavoriteClick
-    }
-
-    fun setRestaurantFavoriteStatus(isFavorite: Boolean) {
-//        if (isFavorite) {
-//            binding.imageViewRestaurantFavorite.setImageResource(R.drawable.favorite_not)
-//        } else {
-//            binding.imageViewRestaurantFavorite.setImageResource(R.drawable.favorite)
-//        }
     }
 }
