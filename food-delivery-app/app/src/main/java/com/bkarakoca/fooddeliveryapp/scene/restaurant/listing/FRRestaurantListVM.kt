@@ -2,7 +2,7 @@ package com.bkarakoca.fooddeliveryapp.scene.restaurant.listing
 
 import androidx.lifecycle.MutableLiveData
 import com.bkarakoca.fooddeliveryapp.base.BaseViewModel
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListItemType
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.handleFavorite
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.GetRestaurantListUseCase
@@ -24,7 +24,7 @@ class FRRestaurantListVM @Inject constructor(
     private val handleRestaurantFavoriteUseCase: HandleRestaurantFavoriteUseCase,
 ) : BaseViewModel() {
 
-    val restaurantListUIModel = MutableLiveData<RestaurantListUIModel?>()
+    val restaurantListUIModel = MutableLiveData<List<RestaurantListItemType>?>()
 
     fun initializeVM() {
         fetchRestaurantList()
@@ -63,11 +63,15 @@ class FRRestaurantListVM @Inject constructor(
             }.collect{ isSuccess ->
                 if (isSuccess) {
                     val newList = restaurantListUIModel.value?.apply {
-                        restaurantList.find {
+                        find {
                             it.id == restaurantUIModel.id
-                        }?.handleFavorite(!restaurantUIModel.isRestaurantFavorite)
+                        }?.let {
+                            if (it is RestaurantUIModel) {
+                                it.handleFavorite(!restaurantUIModel.isRestaurantFavorite)
+                            }
+                        }
                     }
-                    restaurantListUIModel.postValue(newList?.copy())
+                    restaurantListUIModel.postValue(newList)
                 } else {
                     // TODO : handle error
                 }

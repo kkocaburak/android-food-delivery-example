@@ -7,6 +7,11 @@
     <string name="common_error_timeout">Timeout error.</string>
     <string name="minute_text">min</string>
     <string name="menu_text">Menu</string>
+    <string name="text_restaurants_section_favorite">FAVORITES</string>
+    <string name="text_restaurants_section_open">OPEN RESTAURANTS</string>
+    <string name="text_restaurants_section_order_ahead">CLOSING RESTAURANTS</string>
+    <string name="text_restaurants_section_closed">CLOSED RESTAURANTS</string>
+    <string name="text_filter">Filter</string>
     <!-- Common Resources -->
 
 </resources>

@@ -13,22 +13,22 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
     override val layoutId get() = R.layout.fragment_restaurant_list
 
     @Inject
-    lateinit var restaurantAdapter: AdapterRestaurantList
+    lateinit var restaurantBindingAdapter: AdapterBindingRestaurantList
 
     override fun initialize() {
-        viewModel.initializeVM()
         initRecyclerView()
+        viewModel.initializeVM()
     }
 
     private fun initRecyclerView() {
         binder.recyclerviewRestaurant.apply {
-            adapter = restaurantAdapter
+            adapter = restaurantBindingAdapter
             itemAnimator?.changeDuration = 0
         }
     }
 
     override fun setListeners() {
-        restaurantAdapter.apply {
+        restaurantBindingAdapter.apply {
             setOnRestaurantClickListener { restaurantUIModel ->
                 viewModel.onRestaurantClicked(restaurantUIModel)
             }
@@ -40,9 +40,9 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
     }
 
     override fun setReceivers() {
-        observe(viewModel.restaurantListUIModel) { uiModel ->
-            uiModel?.restaurantList?.let { restaurantList ->
-                restaurantAdapter.submitList(ArrayList(restaurantList))
+        observe(viewModel.restaurantListUIModel) { restaurantList ->
+            restaurantList?.let {
+                restaurantBindingAdapter.submitList(ArrayList(it))
             }
         }
     }
