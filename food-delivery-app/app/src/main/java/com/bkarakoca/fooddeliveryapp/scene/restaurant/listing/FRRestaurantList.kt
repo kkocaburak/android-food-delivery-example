@@ -23,7 +23,6 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
     private fun initRecyclerView() {
         binder.recyclerviewRestaurant.apply {
             adapter = restaurantAdapter
-            setHasFixedSize(true)
             itemAnimator?.changeDuration = 0
         }
     }

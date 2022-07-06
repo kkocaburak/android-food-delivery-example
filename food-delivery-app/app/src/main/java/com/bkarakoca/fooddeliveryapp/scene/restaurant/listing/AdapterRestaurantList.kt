@@ -1,8 +1,11 @@
 package com.bkarakoca.fooddeliveryapp.scene.restaurant.listing
 
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.base.BaseListAdapter
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.isRestaurantClosed
 import com.bkarakoca.fooddeliveryapp.databinding.ItemRestaurantBinding
 import com.bkarakoca.fooddeliveryapp.internal.extension.executeAfter
 import javax.inject.Inject
@@ -18,6 +21,10 @@ class AdapterRestaurantList @Inject constructor() :
     override fun bind(binding: ItemRestaurantBinding, item: RestaurantUIModel, index: Int) {
         binding.executeAfter {
             restaurant = item
+            if (item.isRestaurantClosed()) {
+                imageViewRestaurant.colorFilter =
+                    ColorMatrixColorFilter(ColorMatrix().apply { setSaturation(0f) })
+            }
         }
 
         binding.cardViewRestaurantItem.setOnClickListener {

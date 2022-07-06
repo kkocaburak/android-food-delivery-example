@@ -44,7 +44,10 @@ data class RestaurantUIModel(
     override fun equals(other: Any?): Boolean {
         return false
     }
+}
 
+fun RestaurantUIModel.isRestaurantClosed(): Boolean {
+    return restaurantStatusType == RestaurantStatusType.CLOSED
 }
 
 fun RestaurantUIModel.handleFavorite(shouldRestaurantFavorite: Boolean) {

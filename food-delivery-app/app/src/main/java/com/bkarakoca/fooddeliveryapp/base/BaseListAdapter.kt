@@ -31,4 +31,8 @@ abstract class BaseListAdapter<VB : ViewDataBinding, T : ListAdapterItem>(
     override fun onBindViewHolder(holder: BaseViewHolder<VB>, position: Int) {
         bind(holder.binding, getItem(position), position)
     }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 }
