@@ -1,14 +1,15 @@
 package com.bkarakoca.fooddeliveryapp.data.repository.restaurant
 
-import com.bkarakoca.fooddeliveryapp.data.service.local.restaurant.FavoriteRestaurantEntity
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
 
 interface RestaurantRepository {
 
-    fun fetchRestaurantList(): RestaurantListUIModel
+    fun fetchRestaurantListFromLocal(): List<RestaurantUIModel>
 
-    fun fetchFavoriteRestaurantIdList(): List<FavoriteRestaurantEntity>
+    fun fetchRestaurantListFromRoom(): List<RestaurantUIModel>?
 
-    fun handleRestaurantFavorite(shouldRestaurantFavorite: Boolean, restaurantName: String)
+    fun insertRestaurantListUIModel(restaurantUIList: List<RestaurantUIModel>)
+
+    fun updateRestaurantFavorite(restaurantUIModel: RestaurantUIModel): Boolean
 
 }

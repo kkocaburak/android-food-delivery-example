@@ -10,28 +10,26 @@ class RestaurantListMapper @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) {
 
-    fun mapResponseToUIModel(responseModel: RestaurantListResponseModel): RestaurantListUIModel {
-        return RestaurantListUIModel(
-            restaurantList = responseModel.restaurantList.mapIndexed { index, item ->
-                RestaurantUIModel(
-                    restaurantId = index.toLong(),
-                    restaurantImageResId = item.getRestaurantImageResId(),
-                    restaurantRatingColorId = item.getRatingColor(),
-                    restaurantName = item.name.toSafeString(),
-                    restaurantStatusType = item.getRestaurantStatus(),
-                    bestMatch = item.sortingValues?.bestMatch.toSafeString(),
-                    newest = item.sortingValues?.newest.toSafeString(),
-                    restaurantRating = item.sortingValues?.ratingAverage.toSafeString(),
-                    restaurantDeliveryDuration = mapDurationText(item.getDeliveryDurationText()),
-                    restaurantPopularity = item.sortingValues?.popularity.toSafeString(),
-                    averageProductPrice = item.sortingValues?.averageProductPrice.toSafeString(),
-                    deliveryCost = item.getDeliveryCostText(),
-                    minimumCost = item.getMinimumCostText()
-                )
-            }.filter { restaurant ->
-                restaurant.restaurantName.isNotBlank()
-            }
-        )
+    fun mapResponseToUIModel(responseModel: RestaurantListResponseModel): List<RestaurantUIModel> {
+        return responseModel.restaurantList.map { item ->
+            RestaurantUIModel(
+                restaurantImageResId = item.getRestaurantImageResId(),
+                restaurantRatingColorId = item.getRatingColor(),
+                restaurantName = item.name.toSafeString(),
+                restaurantStatusType = item.getRestaurantStatus(),
+                bestMatch = item.sortingValues?.bestMatch.toSafeString(),
+                newest = item.sortingValues?.newest.toSafeString(),
+                restaurantRating = item.sortingValues?.ratingAverage.toSafeString(),
+                restaurantDeliveryDuration = mapDurationText(item.getDeliveryDurationText()),
+                restaurantPopularity = item.sortingValues?.popularity.toSafeString(),
+                averageProductPrice = item.sortingValues?.averageProductPrice.toSafeString(),
+                deliveryCost = item.getDeliveryCostText(),
+                minimumCost = item.getMinimumCostText(),
+                isRestaurantFavorite = false
+            )
+        }.filter { restaurant ->
+            restaurant.restaurantName.isNotBlank()
+        }
     }
 
     private fun mapDurationText(deliveryDurationText: String): String {

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.bkarakoca.fooddeliveryapp.base.BaseViewModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListUIModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.handleFavorite
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.GetRestaurantListUseCase
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.HandleRestaurantFavoriteUseCase
 import com.bkarakoca.fooddeliveryapp.internal.extension.launch
@@ -23,13 +24,13 @@ class FRRestaurantListVM @Inject constructor(
     private val handleRestaurantFavoriteUseCase: HandleRestaurantFavoriteUseCase,
 ) : BaseViewModel() {
 
-    val restaurantListUIModel = MutableLiveData<RestaurantListUIModel>()
+    val restaurantListUIModel = MutableLiveData<RestaurantListUIModel?>()
 
     fun initializeVM() {
         fetchRestaurantList()
     }
 
-    fun fetchRestaurantList() = launch {
+    private fun fetchRestaurantList() = launch {
         withContext(Dispatchers.IO) {
             getRestaurantListUseCase.execute(Unit)
                 .onStart {
@@ -48,13 +49,10 @@ class FRRestaurantListVM @Inject constructor(
         navigate(FRRestaurantListDirections.toFRRestaurantDetail(restaurantUIModel))
     }
 
-    fun handleFavoriteRestaurant(shouldRestaurantFavorite: Boolean, restaurantName: String) = launch {
+    fun handleFavoriteRestaurant(restaurantUIModel: RestaurantUIModel) = launch {
         withContext(Dispatchers.IO) {
             handleRestaurantFavoriteUseCase.execute(
-                HandleRestaurantFavoriteUseCase.Params(
-                    shouldRestaurantFavorite,
-                    restaurantName
-                )
+                HandleRestaurantFavoriteUseCase.Params(restaurantUIModel)
             ).catch { e ->
                 println(e.localizedMessage)
             }.onStart {
@@ -62,7 +60,18 @@ class FRRestaurantListVM @Inject constructor(
                 delay(500)
             }.onCompletion {
                 // TODO : hideLoading
-            }.collect()
+            }.collect{ isSuccess ->
+                if (isSuccess) {
+                    val newList = restaurantListUIModel.value?.apply {
+                        restaurantList.find {
+                            it.id == restaurantUIModel.id
+                        }?.handleFavorite(!restaurantUIModel.isRestaurantFavorite)
+                    }
+                    restaurantListUIModel.postValue(newList?.copy())
+                } else {
+                    // TODO : handle error
+                }
+            }
         }
     }
 
