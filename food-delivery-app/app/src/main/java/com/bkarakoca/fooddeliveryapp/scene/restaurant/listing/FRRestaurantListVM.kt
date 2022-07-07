@@ -1,5 +1,6 @@
 package com.bkarakoca.fooddeliveryapp.scene.restaurant.listing
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import com.bkarakoca.fooddeliveryapp.base.BaseViewModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListUIModel
@@ -9,9 +10,9 @@ import com.bkarakoca.fooddeliveryapp.domain.restaurant.GetRestaurantListUseCase
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.HandleRestaurantFavoriteUseCase
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.SortRestaurantsUseCase
 import com.bkarakoca.fooddeliveryapp.internal.extension.launch
+import com.bkarakoca.fooddeliveryapp.internal.util.Failure
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
@@ -27,14 +28,15 @@ class FRRestaurantListVM @Inject constructor(
 ) : BaseViewModel() {
 
     val filteredRestaurantListUIModel = MutableLiveData<RestaurantListUIModel>()
-    private val restaurantListUIModel = MutableLiveData<RestaurantListUIModel>()
+    val restaurantListUIModel = MutableLiveData<RestaurantListUIModel>()
     private val sortingType = MutableLiveData(RestaurantSortingType.BEST_MATCH)
 
     fun initializeVM() {
         fetchRestaurantList()
     }
 
-    private fun fetchRestaurantList() = launch {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun fetchRestaurantList() = launch {
         withContext(Dispatchers.IO) {
             getRestaurantListUseCase.execute(Unit)
                 .onStart {
@@ -63,7 +65,7 @@ class FRRestaurantListVM @Inject constructor(
             handleRestaurantFavoriteUseCase.execute(
                 HandleRestaurantFavoriteUseCase.Params(restaurantUIModel)
             ).catch { e ->
-                println(e.localizedMessage)
+                handleFailure(Failure.CustomException(e.message))
             }.onStart {
                 // TODO : showLoading
             }.onCompletion {
@@ -77,18 +79,20 @@ class FRRestaurantListVM @Inject constructor(
     fun onRestaurantSortClicked(isChecked: Boolean, _sortingType: RestaurantSortingType) = launch {
         if (isChecked) {
             sortingType.value = _sortingType
+
             restaurantListUIModel.value?.let { _restaurantListUIModel ->
                 sortRestaurantsUseCase.execute(
                     SortRestaurantsUseCase.Params(_restaurantListUIModel, _sortingType)
                 ).collect {
-                    filteredRestaurantListUIModel.postValue(it.copy())
+                    filteredRestaurantListUIModel.value = (it.copy())
                 }
             } ?: handleNullRestaurantList()
         }
     }
 
-    private fun handleNullRestaurantList() {
-        // TODO : show dialog
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun handleNullRestaurantList() {
+        handleFailure(Failure.CustomException("Null Restaurant List"))
     }
 
 }

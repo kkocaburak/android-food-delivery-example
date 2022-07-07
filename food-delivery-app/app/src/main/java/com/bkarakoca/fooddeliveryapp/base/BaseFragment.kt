@@ -55,6 +55,7 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeNavigation()
+        observeFailure()
 
         initialize()
         setListeners()
@@ -65,6 +66,14 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> :
         viewModel.navigation.observeNonNull(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { command ->
                 handleNavigation(command)
+            }
+        }
+    }
+
+    private fun observeFailure() {
+        viewModel.popup.observeNonNull(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { popupModel ->
+                requireContext().showPopup(popupModel)
             }
         }
     }

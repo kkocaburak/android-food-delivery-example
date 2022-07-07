@@ -55,6 +55,10 @@ fun RestaurantModel.getDeliveryDurationText(): String {
     } ?: "60+"
 }
 
+fun RestaurantModel.getAverageProductPriceText(): String {
+    return ((sortingValues?.averageProductPrice?.toDouble() ?: 0.0) / 100.0).toSafeString() + "€"
+}
+
 fun RestaurantModel.getDeliveryCostText(): String {
     return ((sortingValues?.deliveryCosts?.toDouble() ?: 0.0) / 100.0).toSafeString() + "€"
 }
