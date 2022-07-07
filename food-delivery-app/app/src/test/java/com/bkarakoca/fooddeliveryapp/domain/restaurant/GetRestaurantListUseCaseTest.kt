@@ -1,6 +1,5 @@
 package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bkarakoca.fooddeliveryapp.data.repository.restaurant.RestaurantRepositoryImpl
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantHeaderUIModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantSectionEmptyUIModel
@@ -11,24 +10,11 @@ import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.setMain
 import org.junit.*
 
-@ExperimentalCoroutinesApi
 class GetRestaurantListUseCaseTest {
 
-    private val dispatcher = TestCoroutineDispatcher()
-
     lateinit var dataProvider: GetRestaurantListUseCaseDataProvider
-
-    @get:Rule
-    val testInstantTaskExecutorRule = InstantTaskExecutorRule()
 
     @MockK(relaxed = true)
     lateinit var repository: RestaurantRepositoryImpl
@@ -36,12 +22,10 @@ class GetRestaurantListUseCaseTest {
     @MockK(relaxed = true)
     lateinit var resourceProvider: ResourceProvider
 
-
     private lateinit var useCase: GetRestaurantListUseCase
 
     @Before
     fun setUp() {
-        Dispatchers.setMain(dispatcher)
         MockKAnnotations.init(this, relaxUnitFun = true)
 
         dataProvider = GetRestaurantListUseCaseDataProvider()
@@ -49,14 +33,8 @@ class GetRestaurantListUseCaseTest {
         useCase = GetRestaurantListUseCase(repository, resourceProvider)
     }
 
-    @After
-    fun tearDown() {
-        Dispatchers.resetMain()
-        dispatcher.cleanupTestCoroutines()
-    }
-
     @Test
-    fun `when sortRestaurantListByStatus answers sorted list`() = runBlocking {
+    fun `when sortRestaurantListByStatus answers sorted list`() {
         // given
         every { useCase.sortRestaurantListByStatus(mockk()) } answers {
             dataProvider.getSortedRestaurantList()
@@ -66,8 +44,6 @@ class GetRestaurantListUseCaseTest {
         val sortedList = useCase.sortRestaurantListByStatus(
             dataProvider.getRestaurantList()
         )
-
-        delay(100L)
 
         val actualSortedList = dataProvider.getRestaurantList().sortedBy {
             it.restaurantStatusType == RestaurantStatusType.CLOSED
@@ -81,7 +57,7 @@ class GetRestaurantListUseCaseTest {
     }
 
     @Test
-    fun `when getFavoriteRestaurants with favorites answers favoritesList`() = runBlocking {
+    fun `when getFavoriteRestaurants with favorites answers favoritesList`() {
         // when
         val favoriteList = useCase.getFavoriteRestaurants(
             dataProvider.getSortedRestaurantList()
@@ -95,8 +71,7 @@ class GetRestaurantListUseCaseTest {
     }
 
     @Test
-    fun `when getFavoriteRestaurants with no favorites answers favoritesList with empty item`() =
-        runBlocking {
+    fun `when getFavoriteRestaurants with no favorites answers favoritesList with empty item`() {
             // when
             val favoriteList = useCase.getFavoriteRestaurants(
                 dataProvider.getNotFavoriteSortedRestaurantList()
@@ -109,7 +84,7 @@ class GetRestaurantListUseCaseTest {
         }
 
     @Test
-    fun `when getOpenRestaurants called answers openRestaurants`() = runBlocking {
+    fun `when getOpenRestaurants called answers openRestaurants`() {
         // when
         val favoriteList = useCase.getOpenRestaurants(
             dataProvider.getNotFavoriteSortedRestaurantList()
@@ -126,8 +101,7 @@ class GetRestaurantListUseCaseTest {
     }
 
     @Test
-    fun `when getOpenRestaurants called with no open restaurants answers openRestaurants with section`() =
-        runBlocking {
+    fun `when getOpenRestaurants called with no open restaurants answers openRestaurants with section`() {
             // when
             val openList = useCase.getOpenRestaurants(
                 dataProvider.getClosedRestaurantList()
@@ -139,8 +113,7 @@ class GetRestaurantListUseCaseTest {
         }
 
     @Test
-    fun `when getOpenRestaurants favorite restaurants answers openRestaurants with section`() =
-        runBlocking {
+    fun `when getOpenRestaurants favorite restaurants answers openRestaurants with section`() {
             // when
             val openList = useCase.getOpenRestaurants(
                 dataProvider.getOpenFavoriteRestaurantList()
@@ -152,8 +125,7 @@ class GetRestaurantListUseCaseTest {
         }
 
     @Test
-    fun `when getClosingRestaurants answers getClosingRestaurants with section`() =
-        runBlocking {
+    fun `when getClosingRestaurants answers getClosingRestaurants with section`() {
             // when
             val closingList = useCase.getClosingRestaurants(
                 dataProvider.getClosingRestaurantList()
@@ -170,8 +142,7 @@ class GetRestaurantListUseCaseTest {
         }
 
     @Test
-    fun `when getClosingRestaurants favorite restaurants answers empty list`() =
-        runBlocking {
+    fun `when getClosingRestaurants favorite restaurants answers empty list`() {
             // when
             val closingList = useCase.getClosingRestaurants(
                 dataProvider.getClosingFavoriteRestaurantList()
@@ -182,8 +153,7 @@ class GetRestaurantListUseCaseTest {
         }
 
     @Test
-    fun `when getClosedRestaurants answers getClosedRestaurants with section`() =
-        runBlocking {
+    fun `when getClosedRestaurants answers getClosedRestaurants with section`() {
             // when
             val closedList = useCase.getClosedRestaurants(
                 dataProvider.getClosedRestaurantList()
@@ -200,8 +170,7 @@ class GetRestaurantListUseCaseTest {
         }
 
     @Test
-    fun `when getClosedRestaurants favorite restaurants answers empty list`() =
-        runBlocking {
+    fun `when getClosedRestaurants favorite restaurants answers empty list`() {
             // when
             val closedList = useCase.getClosedRestaurants(
                 dataProvider.getClosedFavoriteRestaurantList()

@@ -14,17 +14,17 @@
         android:id="@+id/card_view_restaurant_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardElevation="16dp"
-        app:cardCornerRadius="24dp">
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        app:cardElevation="@dimen/margin_large"
+        app:cardCornerRadius="@dimen/radius_x_large">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="12dp">
+            android:paddingBottom="@dimen/margin_medium">
 
             <FrameLayout
                 android:id="@+id/frame_layout_restaurant_image"
@@ -35,30 +35,40 @@
                 <ImageView
                     android:id="@+id/image_view_restaurant"
                     android:layout_width="match_parent"
-                    android:layout_height="164dp"
+                    android:layout_height="@dimen/height_list_restaurant_image"
                     app:layout_constraintTop_toTopOf="parent"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     app:setImageResourceId="@{item.restaurantImageResId}"
                     tools:src="@drawable/restaurant_image" />
 
-                <ImageView
-                    android:id="@+id/image_view_restaurant_favorite"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="end|top"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    app:setImageResourceId="@{item.getFavoriteIcon}"
-                    tools:src="@drawable/favorite_not" />
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/size_list_restaurant_favorite_card"
+                    android:layout_height="@dimen/size_list_restaurant_favorite_card"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    app:cardCornerRadius="@dimen/radius_small"
+                    app:strokeColor="@color/black"
+                    app:strokeWidth="@dimen/stroke_small"
+                    android:layout_gravity="end|top">
+
+                    <ImageView
+                        android:id="@+id/image_view_restaurant_favorite"
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/size_list_restaurant_favorite_image"
+                        android:layout_height="@dimen/size_list_restaurant_favorite_image"
+                        app:setImageResourceId="@{item.getFavoriteIcon}"
+                        tools:src="@drawable/favorite_not" />
+
+                </com.google.android.material.card.MaterialCardView>
 
                 <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
                     android:id="@+id/text_image_restaurant_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|bottom"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:layout_marginBottom="@dimen/margin_large"
                     android:background="@color/white"
                     app:layout_constraintStart_toEndOf="@+id/text_image_restaurant_min_price"
                     app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
@@ -69,11 +79,12 @@
             </FrameLayout>
 
             <TextView
+                style="@style/Text_Bebas_Large"
                 android:id="@+id/text_view_restaurant_name"
                 android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
+                android:layout_height="@dimen/size_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_x_small"
                 android:text="@{item.restaurantName}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +95,7 @@
                 android:id="@+id/text_image_restaurant_minimum_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="@dimen/margin_x_small"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
                 app:componentImageResId="@drawable/min_value"
@@ -94,7 +105,7 @@
                 android:id="@+id/text_image_restaurant_delivery_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="@dimen/margin_x_small"
                 app:layout_constraintStart_toEndOf="@+id/text_image_restaurant_minimum_cost"
                 app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
                 app:componentImageResId="@drawable/courier"
@@ -104,7 +115,7 @@
                 android:id="@+id/text_image_restaurant_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="@dimen/margin_x_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_restaurant_name"
                 app:componentImageResId="@drawable/duration"

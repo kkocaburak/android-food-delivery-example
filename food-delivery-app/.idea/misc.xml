@@ -5,12 +5,14 @@
       <map>
         <entry key="app/src/main/res/drawable/background_button.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/main_background.xml" value="0.136" />
+        <entry key="app/src/main/res/font-v26/font.xml" value="0.228125" />
+        <entry key="app/src/main/res/font/font.xml" value="0.228125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_splash_main.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_battery_list.xml" value="0.14447463768115942" />
-        <entry key="app/src/main/res/layout/fragment_restaurant_detail.xml" value="0.18885869565217392" />
-        <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_restaurant_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_restaurant_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_battery.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/item_restaurant.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_restaurant_header.xml" value="0.1" />
