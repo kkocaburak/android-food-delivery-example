@@ -94,6 +94,7 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
         observe(viewModel.filteredRestaurantListUIModel) { restaurantList ->
             restaurantList?.let {
                 binder.recyclerviewRestaurant.adapter = restaurantBindingAdapter.apply {
+                    submitList(null)
                     submitList(it.restaurantItemList)
                 }
             }

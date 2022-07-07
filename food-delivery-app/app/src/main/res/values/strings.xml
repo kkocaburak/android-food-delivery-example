@@ -8,7 +8,8 @@
     <string name="minute_text">min</string>
     <string name="menu_text">Menu</string>
     <string name="text_restaurants_section_favorite">FAVORITES</string>
-    <string name="text_restaurants_section_favorite_empty">there is no favorite restaurant</string>
+    <string name="text_restaurants_section_favorite_empty">There is no favorite restaurant</string>
+    <string name="text_restaurants_section_open_empty">There is no open restaurant</string>
     <string name="text_restaurants_section_open">OPEN RESTAURANTS</string>
     <string name="text_restaurants_section_order_ahead">CLOSING RESTAURANTS</string>
     <string name="text_restaurants_section_closed">CLOSED RESTAURANTS</string>

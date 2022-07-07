@@ -28,6 +28,7 @@ class FRRestaurantListVM @Inject constructor(
 
     val filteredRestaurantListUIModel = MutableLiveData<RestaurantListUIModel>()
     private val restaurantListUIModel = MutableLiveData<RestaurantListUIModel>()
+    private val sortingType = MutableLiveData(RestaurantSortingType.BEST_MATCH)
 
     fun initializeVM() {
         fetchRestaurantList()
@@ -45,6 +46,10 @@ class FRRestaurantListVM @Inject constructor(
                 .collect {
                     restaurantListUIModel.postValue(it.copy())
                     filteredRestaurantListUIModel.postValue(it.copy())
+                    onRestaurantSortClicked(
+                        true,
+                        sortingType.value ?: RestaurantSortingType.BEST_MATCH
+                    )
                 }
         }
     }
@@ -61,7 +66,6 @@ class FRRestaurantListVM @Inject constructor(
                 println(e.localizedMessage)
             }.onStart {
                 // TODO : showLoading
-                delay(500)
             }.onCompletion {
                 // TODO : hideLoading
             }.collect {
@@ -70,11 +74,12 @@ class FRRestaurantListVM @Inject constructor(
         }
     }
 
-    fun onRestaurantSortClicked(isChecked: Boolean, sortingType: RestaurantSortingType) = launch {
+    fun onRestaurantSortClicked(isChecked: Boolean, _sortingType: RestaurantSortingType) = launch {
         if (isChecked) {
+            sortingType.value = _sortingType
             restaurantListUIModel.value?.let { _restaurantListUIModel ->
                 sortRestaurantsUseCase.execute(
-                    SortRestaurantsUseCase.Params(_restaurantListUIModel, sortingType)
+                    SortRestaurantsUseCase.Params(_restaurantListUIModel, _sortingType)
                 ).collect {
                     filteredRestaurantListUIModel.postValue(it.copy())
                 }
