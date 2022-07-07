@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantHeaderUIModel" />
+            type="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantSectionEmptyUIModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,18 +16,16 @@
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="20dp">
+        android:layout_marginBottom="8dp">
 
         <TextView
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            tools:text="FAVORITE RESTAURANTS"
-            android:text="@{item.header}"/>
+            android:textSize="16sp"
+            android:gravity="center"
+            tools:text="@string/text_restaurants_section_favorite_empty"
+            android:text="@{item.emptySectionText}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -25,7 +25,7 @@ class RestaurantDataSource @Inject constructor(
         return Gson().fromJson(jsonString, restaurantListResponseModel)
     }
 
-    fun fetchRestaurantListFromRoom(): List<RestaurantUIModel>? {
+    fun fetchRestaurantListFromRoom(): List<RestaurantUIModel> {
         return restaurantDAO.fetchRestaurantListUIModel()
     }
 
@@ -33,19 +33,14 @@ class RestaurantDataSource @Inject constructor(
         return restaurantDAO.insertOrUpdateRestaurantUIModel(restaurantUIList)
     }
 
-    fun updateRestaurantFavorite(restaurantUIModel: RestaurantUIModel): Boolean {
+    fun updateRestaurantFavorite(restaurantUIModel: RestaurantUIModel) {
         val storedList = restaurantDAO.fetchRestaurantListUIModel()
-        storedList?.find {
+        storedList.find {
             it.id == restaurantUIModel.id
         }?.apply {
             isRestaurantFavorite = !restaurantUIModel.isRestaurantFavorite
         }
 
-        return if (storedList != null) {
-            restaurantDAO.updateRestaurantFavorite(storedList)
-            true
-        } else {
-            false
-        }
+        restaurantDAO.updateRestaurantFavorite(storedList)
     }
 }

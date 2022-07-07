@@ -9,13 +9,13 @@ import javax.inject.Inject
 
 class HandleRestaurantFavoriteUseCase @Inject constructor(
     private val restaurantRepository: RestaurantRepository
-) : FlowUseCase<HandleRestaurantFavoriteUseCase.Params, Boolean>() {
+) : FlowUseCase<HandleRestaurantFavoriteUseCase.Params, Unit>() {
 
     data class Params(
         val restaurantUIModel: RestaurantUIModel
     )
 
-    override suspend fun execute(params: Params): Flow<Boolean> {
+    override suspend fun execute(params: Params): Flow<Unit> {
         return flowOf(
             restaurantRepository.updateRestaurantFavorite(params.restaurantUIModel)
         )

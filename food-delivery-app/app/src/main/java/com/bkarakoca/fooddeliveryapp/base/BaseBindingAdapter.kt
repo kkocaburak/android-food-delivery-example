@@ -11,12 +11,10 @@ abstract class BaseBindingAdapter<T : ListAdapterItem>(
     var currentSelected: T? = null
 ) : ListAdapter<T, BaseBindingViewHolder<T>>(diffCallback) {
 
-    abstract fun getItemLayoutId(viewType: Int): Int
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseBindingViewHolder<T> {
         val holder = BaseBindingViewHolder(
             DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context), getItemLayoutId(viewType), parent, false
+                LayoutInflater.from(parent.context), getItem(viewType).layoutId, parent, false
             ),
             currentSelected
         )

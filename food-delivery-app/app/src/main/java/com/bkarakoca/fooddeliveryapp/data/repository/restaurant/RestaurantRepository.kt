@@ -6,10 +6,10 @@ interface RestaurantRepository {
 
     fun fetchRestaurantListFromLocal(): List<RestaurantUIModel>
 
-    fun fetchRestaurantListFromRoom(): List<RestaurantUIModel>?
+    fun fetchRestaurantListFromRoom(): List<RestaurantUIModel>
 
     fun insertRestaurantListUIModel(restaurantUIList: List<RestaurantUIModel>)
 
-    fun updateRestaurantFavorite(restaurantUIModel: RestaurantUIModel): Boolean
+    fun updateRestaurantFavorite(restaurantUIModel: RestaurantUIModel)
 
 }
