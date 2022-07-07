@@ -98,7 +98,15 @@ class GetRestaurantListUseCase @Inject constructor(
             sectionItemSize = openRestaurantsList.size
         )
         openRestaurants.add(openRestaurantsSection)
-        openRestaurants.addAll(openRestaurantsList)
+
+        if (openRestaurantsList.isNotEmpty()) {
+            openRestaurants.addAll(openRestaurantsList)
+        } else {
+            val emptySection = RestaurantSectionEmptyUIModel(
+                emptySectionText = resourceProvider.getString(R.string.text_restaurants_section_open_empty),
+            )
+            openRestaurants.add(emptySection)
+        }
         return openRestaurants
     }
 
@@ -114,8 +122,11 @@ class GetRestaurantListUseCase @Inject constructor(
             header = resourceProvider.getString(R.string.text_restaurants_section_order_ahead),
             sectionItemSize = closingRestaurantsList.size
         )
-        closingRestaurants.add(closingRestaurantsSection)
-        closingRestaurants.addAll(closingRestaurantsList)
+
+        if (closingRestaurantsList.isNotEmpty()) {
+            closingRestaurants.add(closingRestaurantsSection)
+            closingRestaurants.addAll(closingRestaurantsList)
+        }
         return closingRestaurants
     }
 
@@ -131,8 +142,10 @@ class GetRestaurantListUseCase @Inject constructor(
             header = resourceProvider.getString(R.string.text_restaurants_section_closed),
             sectionItemSize = closedRestaurantsList.size
         )
-        closedRestaurants.add(closedRestaurantsSection)
-        closedRestaurants.addAll(closedRestaurantsList)
+        if (closedRestaurantsList.isNotEmpty()) {
+            closedRestaurants.add(closedRestaurantsSection)
+            closedRestaurants.addAll(closedRestaurantsList)
+        }
         return closedRestaurants
     }
 
