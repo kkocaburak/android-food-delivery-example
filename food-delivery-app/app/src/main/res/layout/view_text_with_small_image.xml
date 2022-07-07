@@ -5,31 +5,32 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:layout_marginTop="8dp">
+        android:layout_height="@dimen/size_medium"
+        android:paddingStart="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_small"
+        android:paddingTop="@dimen/margin_x_small"
+        android:paddingBottom="@dimen/margin_x_small"
+        android:layout_marginTop="@dimen/margin_small">
 
         <ImageView
             android:id="@+id/image_view_component"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/size_small"
+            android:layout_height="@dimen/size_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@color/black"/>
 
         <TextView
+            style="@style/Text_Bebas_Medium"
             android:id="@+id/text_view_component"
             android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
+            android:layout_height="@dimen/size_small"
+            android:layout_marginStart="@dimen/margin_small"
             android:gravity="center"
             app:layout_constraintStart_toEndOf="@id/image_view_component"
             app:layout_constraintTop_toTopOf="@id/image_view_component"
             app:layout_constraintBottom_toBottomOf="@id/image_view_component"
-            tools:text="Sushico"/>
+            tools:text="15 - 30 min"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

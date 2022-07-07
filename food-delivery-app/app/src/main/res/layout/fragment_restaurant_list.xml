@@ -17,81 +17,90 @@
 
         <TextView
             android:id="@+id/text_view_header"
+            style="@style/Text_Bebas_Huge"
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_x_large"
             android:gravity="center"
-            android:textSize="24sp"
-            android:layout_marginTop="24dp"
+            android:textStyle="bold"
             android:text="@string/app_name"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/app_name"/>
+            tools:text="@string/app_name" />
 
         <com.google.android.material.chip.ChipGroup
-            app:singleSelection="true"
             android:id="@+id/chip_group_sorting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_header">
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_x_large"
+            android:layout_marginEnd="@dimen/margin_large"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_header"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_best_match"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="best match"/>
+                android:text="@string/restaurant_list_sort_best"
+                android:textAppearance="@style/chipText" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_newest"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="newest"/>
+                android:text="@string/restaurant_list_sort_newest"
+                android:textAppearance="@style/chipText" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_rating"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="rating"/>
+                android:text="@string/restaurant_list_sort_rating"
+                android:textAppearance="@style/chipText" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_distance"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="distance"/>
+                android:text="@string/restaurant_list_sort_distance"
+                android:textAppearance="@style/chipText" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_popularity"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="popularity"/>
+                android:text="@string/restaurant_list_sort_popularity"
+                android:textAppearance="@style/chipText" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_avg_product_price"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="avg product price"/>
+                android:text="@string/restaurant_list_sort_avg_price"
+                android:textAppearance="@style/chipText" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_delivery_cost"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="delivery cost"/>
+                android:text="@string/restaurant_list_sort_delivery_cost"
+                android:textAppearance="@style/chipText" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip_minimum_cost"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="minimum cost"/>
+                android:text="@string/restaurant_list_sort_minimum_cost"
+                android:textAppearance="@style/chipText" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -99,7 +108,7 @@
             android:id="@+id/recyclerview_restaurant"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_large"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chip_group_sorting" />

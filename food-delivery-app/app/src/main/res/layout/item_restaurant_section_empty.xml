@@ -19,10 +19,10 @@
         android:layout_marginBottom="8dp">
 
         <TextView
+            style="@style/Text_Bebas_Large"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:gravity="center"
             tools:text="@string/text_restaurants_section_favorite_empty"
             android:text="@{item.emptySectionText}"/>

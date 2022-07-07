@@ -14,15 +14,35 @@
     <!-- Margin -->
 
     <!-- Size -->
+    <dimen name="size_small">24dp</dimen>
     <dimen name="size_medium">32dp</dimen>
     <dimen name="size_large">48dp</dimen>
     <dimen name="size_x_large">64dp</dimen>
+    <dimen name="size_xx_large">100dp</dimen>
+    <dimen name="size_large_divider">4dp</dimen>
 
     <dimen name="size_button_text">17sp</dimen>
+    <dimen name="size_button_large_text">24sp</dimen>
+    <dimen name="size_medium_text">16sp</dimen>
+    <dimen name="size_large_text">24sp</dimen>
+    <dimen name="size_huge_text">44sp</dimen>
+
+    <dimen name="height_list_restaurant_image">164dp</dimen>
+    <dimen name="height_restaurant_detail_image">250dp</dimen>
+    <dimen name="height_restaurant_detail_rating">144dp</dimen>
+    <dimen name="width_restaurant_detail_rating">140dp</dimen>
+    <dimen name="size_list_restaurant_favorite_image">40dp</dimen>
+    <dimen name="size_list_restaurant_favorite_card">56dp</dimen>
     <!-- Size -->
 
     <!-- Radius -->
+    <dimen name="stroke_small">3dp</dimen>
+    <dimen name="stroke_medium">4dp</dimen>
     <dimen name="radius_button">4dp</dimen>
+    <dimen name="radius_small">8dp</dimen>
+    <dimen name="radius_large">20dp</dimen>
+    <dimen name="radius_x_large">24dp</dimen>
+    <dimen name="radius_huge">36dp</dimen>
     <!-- Radius -->
 
 </resources>

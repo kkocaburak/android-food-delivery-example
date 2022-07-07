@@ -1,46 +1,27 @@
 package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantSortingType
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantStatusType
 import io.mockk.MockKAnnotations
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.setMain
 import org.junit.*
 
-@ExperimentalCoroutinesApi
 class SortRestaurantsUseCaseTest {
-
-    private val dispatcher = TestCoroutineDispatcher()
 
     lateinit var dataProvider: SortRestaurantsUseCaseDataProvider
 
-    @get:Rule
-    val testInstantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var useCase: SortRestaurantsUseCase
 
     @Before
     fun setUp() {
-        Dispatchers.setMain(dispatcher)
         MockKAnnotations.init(this, relaxUnitFun = true)
 
         dataProvider = SortRestaurantsUseCaseDataProvider()
         useCase = SortRestaurantsUseCase()
     }
 
-    @After
-    fun tearDown() {
-        Dispatchers.resetMain()
-        dispatcher.cleanupTestCoroutines()
-    }
-
     @Test
-    fun `when sortList called with best_match answers sorted list`() = runBlocking {
+    fun `when sortList called with best_match answers sorted list`() {
         // given
         var actualList = dataProvider.getRestaurantList()
         val sortedList = useCase.sortList(
@@ -61,7 +42,7 @@ class SortRestaurantsUseCaseTest {
     }
 
     @Test
-    fun `when sortList called with newest answers sorted list`() = runBlocking {
+    fun `when sortList called with newest answers sorted list`() {
         // given
         var actualList = dataProvider.getRestaurantList()
         val sortedList = useCase.sortList(
@@ -82,7 +63,7 @@ class SortRestaurantsUseCaseTest {
     }
 
     @Test
-    fun `when sortList called with rating answers sorted list`() = runBlocking {
+    fun `when sortList called with rating answers sorted list`() {
         // given
         var actualList = dataProvider.getRestaurantList()
         val sortedList = useCase.sortList(
@@ -103,7 +84,7 @@ class SortRestaurantsUseCaseTest {
     }
 
     @Test
-    fun `when sortList called with distance answers sorted list`() = runBlocking {
+    fun `when sortList called with distance answers sorted list`() {
         // given
         var actualList = dataProvider.getRestaurantList()
         val sortedList = useCase.sortList(
@@ -124,7 +105,7 @@ class SortRestaurantsUseCaseTest {
     }
 
     @Test
-    fun `when sortList called with popularity answers sorted list`() = runBlocking {
+    fun `when sortList called with popularity answers sorted list`() {
         // given
         var actualList = dataProvider.getRestaurantList()
         val sortedList = useCase.sortList(
@@ -145,7 +126,7 @@ class SortRestaurantsUseCaseTest {
     }
 
     @Test
-    fun `when sortList called with average_product_price answers sorted list`() = runBlocking {
+    fun `when sortList called with average_product_price answers sorted list`() {
         // given
         var actualList = dataProvider.getRestaurantList()
         val sortedList = useCase.sortList(
@@ -166,7 +147,7 @@ class SortRestaurantsUseCaseTest {
     }
 
     @Test
-    fun `when sortList called with delivery_cost answers sorted list`() = runBlocking {
+    fun `when sortList called with delivery_cost answers sorted list`() {
         // given
         var actualList = dataProvider.getRestaurantList()
         val sortedList = useCase.sortList(
@@ -187,7 +168,7 @@ class SortRestaurantsUseCaseTest {
     }
 
     @Test
-    fun `when sortList called with min_cost answers sorted list`() = runBlocking {
+    fun `when sortList called with min_cost answers sorted list`() {
         // given
         var actualList = dataProvider.getRestaurantList()
         val sortedList = useCase.sortList(

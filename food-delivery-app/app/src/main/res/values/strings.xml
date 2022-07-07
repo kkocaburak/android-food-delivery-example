@@ -14,6 +14,22 @@
     <string name="text_restaurants_section_order_ahead">CLOSING RESTAURANTS</string>
     <string name="text_restaurants_section_closed">CLOSED RESTAURANTS</string>
     <string name="text_filter">Filter</string>
+
+    <string name="text_restaurant_min_price">Minimum </string>
+    <string name="text_restaurant_delivery_cost">Delivery </string>
+    <string name="text_restaurant_popularity">Popularity </string>
+    <string name="text_restaurant_duration">Duration </string>
+    <string name="text_restaurant_best_match">Best Match </string>
+    <string name="text_restaurant_rating">Rating </string>
+    <string name="text_restaurant_average_price">Average </string>
+    <string name="restaurant_list_sort_best">best</string>
+    <string name="restaurant_list_sort_newest">newest</string>
+    <string name="restaurant_list_sort_rating">rating</string>
+    <string name="restaurant_list_sort_distance">distance</string>
+    <string name="restaurant_list_sort_popularity">popularity</string>
+    <string name="restaurant_list_sort_avg_price">avg price</string>
+    <string name="restaurant_list_sort_delivery_cost">delivery cost</string>
+    <string name="restaurant_list_sort_minimum_cost">minimum cost</string>
     <!-- Common Resources -->
 
 </resources>
