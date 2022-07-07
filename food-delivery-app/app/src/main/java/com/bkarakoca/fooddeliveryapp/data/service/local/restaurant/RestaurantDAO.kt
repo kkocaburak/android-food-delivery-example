@@ -22,7 +22,7 @@ interface RestaurantDAO {
     }
 
     @Query("Select * from restaurantUIModel")
-    fun fetchRestaurantListUIModel(): List<RestaurantUIModel>?
+    fun fetchRestaurantListUIModel(): List<RestaurantUIModel>
 
     @Update
     fun updateRestaurantFavorite(restaurantUIList: List<RestaurantUIModel>)

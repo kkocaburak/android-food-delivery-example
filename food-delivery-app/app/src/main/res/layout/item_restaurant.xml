@@ -63,7 +63,7 @@
                     app:layout_constraintStart_toEndOf="@+id/text_image_restaurant_min_price"
                     app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
                     app:componentImageResId="@drawable/rating"
-                    app:setComponentText="@{item.restaurantRating}"
+                    app:setComponentText="@{item.restaurantRatingText}"
                     app:setComponentTextColor="@{item.restaurantRatingColorId}" />
 
             </FrameLayout>
@@ -88,7 +88,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
                 app:componentImageResId="@drawable/min_value"
-                app:setComponentText="@{item.minimumCost}" />
+                app:setComponentText="@{item.minimumCostText}" />
 
             <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
                 android:id="@+id/text_image_restaurant_delivery_cost"
@@ -98,7 +98,7 @@
                 app:layout_constraintStart_toEndOf="@+id/text_image_restaurant_minimum_cost"
                 app:layout_constraintTop_toBottomOf="@id/text_view_restaurant_name"
                 app:componentImageResId="@drawable/courier"
-                app:setComponentText="@{item.deliveryCost}" />
+                app:setComponentText="@{item.deliveryCostText}" />
 
             <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
                 android:id="@+id/text_image_restaurant_distance"
@@ -108,7 +108,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_restaurant_name"
                 app:componentImageResId="@drawable/duration"
-                app:setComponentText="@{item.restaurantDeliveryDuration}" />
+                app:setComponentText="@{item.restaurantDeliveryDurationText}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

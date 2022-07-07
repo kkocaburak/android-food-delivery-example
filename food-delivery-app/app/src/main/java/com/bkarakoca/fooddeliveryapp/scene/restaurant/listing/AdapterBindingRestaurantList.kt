@@ -16,12 +16,12 @@ class AdapterBindingRestaurantList @Inject constructor() : BaseBindingAdapter<Re
     private var onRestaurantClick: ((RestaurantUIModel) -> Unit)? = null
     private var onRestaurantFavoriteClick: ((RestaurantUIModel) -> Unit)? = null
 
-    override fun getItemLayoutId(viewType: Int): Int {
-        return getItem(viewType).layoutId
-    }
-
     override fun getItemViewType(position: Int): Int {
         return position
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
     override fun onBindViewHolder(

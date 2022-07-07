@@ -2,6 +2,8 @@ package com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant
 
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.data.model.*
+import com.bkarakoca.fooddeliveryapp.internal.extension.toSafeDouble
+import com.bkarakoca.fooddeliveryapp.internal.extension.toSafeInt
 import com.bkarakoca.fooddeliveryapp.internal.extension.toSafeString
 import com.bkarakoca.fooddeliveryapp.internal.util.ResourceProvider
 import javax.inject.Inject
@@ -17,14 +19,22 @@ class RestaurantListMapper @Inject constructor(
                 restaurantRatingColorId = item.getRatingColor(),
                 restaurantName = item.name.toSafeString(),
                 restaurantStatusType = item.getRestaurantStatus(),
-                bestMatch = item.sortingValues?.bestMatch.toSafeString(),
-                newest = item.sortingValues?.newest.toSafeString(),
-                restaurantRating = item.sortingValues?.ratingAverage.toSafeString(),
-                restaurantDeliveryDuration = mapDurationText(item.getDeliveryDurationText()),
-                restaurantPopularity = item.sortingValues?.popularity.toSafeString(),
-                averageProductPrice = item.sortingValues?.averageProductPrice.toSafeString(),
-                deliveryCost = item.getDeliveryCostText(),
-                minimumCost = item.getMinimumCostText(),
+                bestMatchText = item.sortingValues?.bestMatch.toSafeString(),
+                bestMatchValue = item.sortingValues?.bestMatch.toSafeDouble(),
+                newestText = item.sortingValues?.newest.toSafeString(),
+                newestValue = item.sortingValues?.newest.toSafeDouble(),
+                restaurantRatingText = item.sortingValues?.ratingAverage.toSafeString(),
+                restaurantRatingValue = item.sortingValues?.ratingAverage.toSafeDouble(),
+                restaurantDeliveryDurationText = mapDurationText(item.getDeliveryDurationText()),
+                restaurantDeliveryDurationValue = item.sortingValues?.distance.toSafeInt(),
+                restaurantPopularityText = item.sortingValues?.popularity.toSafeString(),
+                restaurantPopularityValue = item.sortingValues?.popularity.toSafeDouble(),
+                averageProductPriceText = item.sortingValues?.averageProductPrice.toSafeString(),
+                averageProductPriceValue = item.sortingValues?.averageProductPrice.toSafeInt(),
+                deliveryCostText = item.getDeliveryCostText(),
+                deliveryCostValue = item.getDeliveryCostValue(),
+                minimumCostText = item.getMinimumCostText(),
+                minimumCostValue = item.getMinimumCostValue(),
                 isRestaurantFavorite = false
             )
         }.filter { restaurant ->

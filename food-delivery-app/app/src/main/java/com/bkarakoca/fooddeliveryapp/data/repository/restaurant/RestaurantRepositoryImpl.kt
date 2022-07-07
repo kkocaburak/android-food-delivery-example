@@ -19,7 +19,7 @@ class RestaurantRepositoryImpl @Inject constructor(
         return restaurantListMapper.mapResponseToUIModel(responseModel)
     }
 
-    override fun fetchRestaurantListFromRoom(): List<RestaurantUIModel>? {
+    override fun fetchRestaurantListFromRoom(): List<RestaurantUIModel> {
         return restaurantDataSource.fetchRestaurantListFromRoom()
     }
 
@@ -27,7 +27,7 @@ class RestaurantRepositoryImpl @Inject constructor(
         restaurantDataSource.insertRestaurantListUIModel(restaurantUIList)
     }
 
-    override fun updateRestaurantFavorite(restaurantUIModel: RestaurantUIModel): Boolean {
+    override fun updateRestaurantFavorite(restaurantUIModel: RestaurantUIModel) {
         return restaurantDataSource.updateRestaurantFavorite(restaurantUIModel)
     }
 }

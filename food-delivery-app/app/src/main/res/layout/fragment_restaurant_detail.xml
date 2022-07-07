@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 app:componentImageResId="@drawable/courier"
-                app:setComponentText="@{viewModel.restaurantUIModel.deliveryCost}" />
+                app:setComponentText="@{viewModel.restaurantUIModel.deliveryCostText}" />
 
             <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
                 android:id="@+id/text_image_restaurant_min_price"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 app:componentImageResId="@drawable/min_value"
-                app:setComponentText="@{viewModel.restaurantUIModel.minimumCost}" />
+                app:setComponentText="@{viewModel.restaurantUIModel.minimumCostText}" />
 
             <com.bkarakoca.fooddeliveryapp.internal.customui.TextWithSmallImageView
                 android:id="@+id/text_image_restaurant_rating"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 app:componentImageResId="@drawable/rating"
-                app:setComponentText="@{viewModel.restaurantUIModel.restaurantRating}"
+                app:setComponentText="@{viewModel.restaurantUIModel.restaurantRatingText}"
                 app:setComponentTextColor="@{viewModel.restaurantUIModel.restaurantRatingColorId}" />
 
         </LinearLayout>

@@ -59,8 +59,16 @@ fun RestaurantModel.getDeliveryCostText(): String {
     return ((sortingValues?.deliveryCosts?.toDouble() ?: 0.0) / 100.0).toSafeString() + "€"
 }
 
+fun RestaurantModel.getDeliveryCostValue(): Double {
+    return ((sortingValues?.deliveryCosts?.toDouble() ?: 0.0) / 100.0)
+}
+
 fun RestaurantModel.getMinimumCostText(): String {
     return ((sortingValues?. minCost?.toDouble() ?: 0.0) / 100.0).toSafeString() + "€"
+}
+
+fun RestaurantModel.getMinimumCostValue(): Double {
+    return ((sortingValues?. minCost?.toDouble() ?: 0.0) / 100.0)
 }
 
 data class RestaurantSortingValues(
