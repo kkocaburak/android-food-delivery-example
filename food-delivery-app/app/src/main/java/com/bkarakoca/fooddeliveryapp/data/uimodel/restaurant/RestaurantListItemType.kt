@@ -52,6 +52,34 @@ data class RestaurantUIModel(
     override fun equals(other: Any?): Boolean {
         return false
     }
+
+    override fun hashCode(): Int {
+        var result = id?.hashCode() ?: 0
+        result = 31 * result + layoutId
+        result = 31 * result + restaurantImageResId
+        result = 31 * result + restaurantRatingColorId
+        result = 31 * result + restaurantName.hashCode()
+        result = 31 * result + restaurantStatusType.hashCode()
+        result = 31 * result + bestMatchText.hashCode()
+        result = 31 * result + bestMatchValue.hashCode()
+        result = 31 * result + newestText.hashCode()
+        result = 31 * result + newestValue.hashCode()
+        result = 31 * result + restaurantRatingText.hashCode()
+        result = 31 * result + restaurantRatingValue.hashCode()
+        result = 31 * result + restaurantDeliveryDurationText.hashCode()
+        result = 31 * result + restaurantDeliveryDurationValue
+        result = 31 * result + restaurantPopularityText.hashCode()
+        result = 31 * result + restaurantPopularityValue.hashCode()
+        result = 31 * result + averageProductPriceText.hashCode()
+        result = 31 * result + averageProductPriceValue
+        result = 31 * result + deliveryCostText.hashCode()
+        result = 31 * result + deliveryCostValue.hashCode()
+        result = 31 * result + minimumCostText.hashCode()
+        result = 31 * result + minimumCostValue.hashCode()
+        result = 31 * result + isRestaurantFavorite.hashCode()
+        result = 31 * result + restaurantFavoriteIconResId
+        return result
+    }
 }
 
 @Parcelize

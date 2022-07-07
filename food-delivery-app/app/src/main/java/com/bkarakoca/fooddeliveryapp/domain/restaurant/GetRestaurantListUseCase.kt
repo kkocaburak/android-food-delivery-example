@@ -1,5 +1,6 @@
 package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
+import androidx.annotation.VisibleForTesting
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.data.repository.restaurant.RestaurantRepository
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.*
@@ -31,7 +32,8 @@ class GetRestaurantListUseCase @Inject constructor(
         }
     }
 
-    private fun getSectionedRestaurantList(restaurantList: List<RestaurantUIModel>): RestaurantListUIModel {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun getSectionedRestaurantList(restaurantList: List<RestaurantUIModel>): RestaurantListUIModel {
         val sortedRestaurantList = sortRestaurantListByStatus(restaurantList)
         val restaurantItemList = arrayListOf<RestaurantListItemType>()
 
@@ -54,13 +56,15 @@ class GetRestaurantListUseCase @Inject constructor(
         )
     }
 
-    private fun sortRestaurantListByStatus(restaurantList: List<RestaurantUIModel>): List<RestaurantUIModel> {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun sortRestaurantListByStatus(restaurantList: List<RestaurantUIModel>): List<RestaurantUIModel> {
         return restaurantList.sortedBy {
             it.restaurantStatusType == RestaurantStatusType.CLOSED
         }
     }
 
-    private fun getFavoriteRestaurants(
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun getFavoriteRestaurants(
         restaurantList: List<RestaurantUIModel>
     ): List<RestaurantListItemType> {
         val favoriteRestaurants = arrayListOf<RestaurantListItemType>()
@@ -85,7 +89,8 @@ class GetRestaurantListUseCase @Inject constructor(
         return favoriteRestaurants
     }
 
-    private fun getOpenRestaurants(
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun getOpenRestaurants(
         restaurantList: List<RestaurantUIModel>
     ): List<RestaurantListItemType> {
         val openRestaurants = arrayListOf<RestaurantListItemType>()
@@ -110,7 +115,8 @@ class GetRestaurantListUseCase @Inject constructor(
         return openRestaurants
     }
 
-    private fun getClosingRestaurants(
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun getClosingRestaurants(
         restaurantList: List<RestaurantUIModel>
     ): List<RestaurantListItemType> {
         val closingRestaurants = arrayListOf<RestaurantListItemType>()
@@ -130,7 +136,8 @@ class GetRestaurantListUseCase @Inject constructor(
         return closingRestaurants
     }
 
-    private fun getClosedRestaurants(
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun getClosedRestaurants(
         restaurantList: List<RestaurantUIModel>
     ): List<RestaurantListItemType> {
         val closedRestaurants = arrayListOf<RestaurantListItemType>()

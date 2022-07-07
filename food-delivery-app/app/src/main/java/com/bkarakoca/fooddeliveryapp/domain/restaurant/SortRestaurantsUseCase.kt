@@ -1,5 +1,6 @@
 package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
+import androidx.annotation.VisibleForTesting
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.*
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantSortingType.*
 import com.bkarakoca.fooddeliveryapp.internal.util.flow.FlowUseCase
@@ -36,7 +37,8 @@ class SortRestaurantsUseCase @Inject constructor() :
         )
     }
 
-    private fun sortList(
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    internal fun sortList(
         itemList: List<RestaurantListItemType>,
         sortingType: RestaurantSortingType
     ): List<RestaurantListItemType> {
@@ -84,8 +86,8 @@ class SortRestaurantsUseCase @Inject constructor() :
                         restaurant.minimumCostValue
                     }
                 }
-            }.sortedBy {
-                it.restaurantStatusType == RestaurantStatusType.CLOSED
+            }.sortedBy { restaurant ->
+                restaurant.restaurantStatusType == RestaurantStatusType.CLOSED
             }
         })
 

@@ -5,7 +5,7 @@
     <string name="common_error_network_connection">Network error, please try again.</string>
     <string name="common_error_unknown">Unknown error.</string>
     <string name="common_error_timeout">Timeout error.</string>
-    <string name="minute_text">min</string>
+    <string name="minute_text"> min</string>
     <string name="menu_text">Menu</string>
     <string name="text_restaurants_section_favorite">FAVORITES</string>
     <string name="text_restaurants_section_favorite_empty">There is no favorite restaurant</string>

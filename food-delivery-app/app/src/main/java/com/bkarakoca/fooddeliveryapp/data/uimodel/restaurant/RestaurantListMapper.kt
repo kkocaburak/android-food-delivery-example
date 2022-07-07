@@ -29,7 +29,7 @@ class RestaurantListMapper @Inject constructor(
                 restaurantDeliveryDurationValue = item.sortingValues?.distance.toSafeInt(),
                 restaurantPopularityText = item.sortingValues?.popularity.toSafeString(),
                 restaurantPopularityValue = item.sortingValues?.popularity.toSafeDouble(),
-                averageProductPriceText = item.sortingValues?.averageProductPrice.toSafeString(),
+                averageProductPriceText = item.getAverageProductPriceText(),
                 averageProductPriceValue = item.sortingValues?.averageProductPrice.toSafeInt(),
                 deliveryCostText = item.getDeliveryCostText(),
                 deliveryCostValue = item.getDeliveryCostValue(),
