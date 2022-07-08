@@ -1,7 +1,7 @@
 # Food Delivery App
 Food Delivery App is a simple MVVM android application with Single Activity architecture. This application represents restaurant listing from local json by sections with favorite and sorting features and detail page for restaurant.
 
-<img src="/assets/restaurant_list.gif" width="260"> | <img src="/assets/restaurant_list_favorite.gif" width="260"> | <img src="/assets/restaurant_detail.gif" width="260">
+<img src="/assets/restaurant_list.gif" width="260"> | <img src="/assets/restaurant_favorite.gif" width="260"> | <img src="/assets/restaurant_detail.gif" width="260">
 
 ## Architecture
 
