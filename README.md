@@ -32,10 +32,8 @@ Food Delivery App is a simple MVVM android application with Single Activity arch
 - **[Coroutines](https://github.com/Kotlin/kotlinx.coroutines):** Asynchronous programming
 - **[Kotlin-Flow](https://developer.android.com/kotlin/flow):** Asynchronous programming
 - **[Room](https://developer.android.com/jetpack/androidx/releases/room):** Local database
-- **[Glide](https://github.com/bumptech/glide):** Image loading and caching
 - **[Retrofit](https://github.com/square/retrofit):** Type safe HTTP client
 - **[GSON](https://github.com/google/gson):** JSON serializer/deserializer
-- **[Google Maps](https://developers.google.com/maps/documentation/android-sdk/start):** Map service
 - **[MockK](https://mockk.io/ANDROID.html):** Unit test
 
 ## Unit Test
