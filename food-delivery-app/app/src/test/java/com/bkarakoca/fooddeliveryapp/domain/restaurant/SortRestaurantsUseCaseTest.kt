@@ -9,7 +9,6 @@ class SortRestaurantsUseCaseTest {
 
     lateinit var dataProvider: SortRestaurantsUseCaseDataProvider
 
-
     private lateinit var useCase: SortRestaurantsUseCase
 
     @Before

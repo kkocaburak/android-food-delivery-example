@@ -1,7 +1,7 @@
 package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
 import com.bkarakoca.fooddeliveryapp.data.repository.restaurant.RestaurantRepository
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import com.bkarakoca.fooddeliveryapp.internal.util.flow.FlowUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf

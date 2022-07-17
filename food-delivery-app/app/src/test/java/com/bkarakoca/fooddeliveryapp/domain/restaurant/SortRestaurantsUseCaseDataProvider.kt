@@ -2,7 +2,7 @@ package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantStatusType
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 
 class SortRestaurantsUseCaseDataProvider {
     fun getRestaurantList(): List<RestaurantUIModel> {

@@ -2,6 +2,7 @@ package com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant
 
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.data.model.*
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import com.bkarakoca.fooddeliveryapp.internal.extension.toSafeDouble
 import com.bkarakoca.fooddeliveryapp.internal.extension.toSafeInt
 import com.bkarakoca.fooddeliveryapp.internal.extension.toSafeString

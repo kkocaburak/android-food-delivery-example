@@ -1,10 +1,10 @@
 package com.bkarakoca.fooddeliveryapp.scene.restaurant.listing
 
 import com.bkarakoca.fooddeliveryapp.R
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantHeaderUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantHeaderUIModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListUIModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantStatusType
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 
 class FRRestaurantListVMDataProvider {
 

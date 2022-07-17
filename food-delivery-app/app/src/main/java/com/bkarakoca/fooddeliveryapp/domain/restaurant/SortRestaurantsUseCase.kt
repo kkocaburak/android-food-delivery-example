@@ -3,6 +3,10 @@ package com.bkarakoca.fooddeliveryapp.domain.restaurant
 import androidx.annotation.VisibleForTesting
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.*
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantSortingType.*
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantHeaderUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantListItemType
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantSectionEmptyUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import com.bkarakoca.fooddeliveryapp.internal.util.flow.FlowUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -26,13 +30,14 @@ class SortRestaurantsUseCase @Inject constructor() :
         restaurantItemList.addAll(openRestaurants)
         restaurantItemList.addAll(closingRestaurants)
         restaurantItemList.addAll(closedRestaurants)
+
         return flowOf(
             RestaurantListUIModel(
                 restaurantItemList,
-                sortList(params.restaurantList.favoriteRestaurantsItemList, params.sortingType),
-                sortList(params.restaurantList.openRestaurantsItemList, params.sortingType),
-                sortList(params.restaurantList.closingRestaurantsItemList, params.sortingType),
-                sortList(params.restaurantList.closedRestaurantsItemList, params.sortingType)
+                favoriteRestaurants,
+                openRestaurants,
+                closingRestaurants,
+                closedRestaurants
             )
         )
     }
@@ -43,7 +48,7 @@ class SortRestaurantsUseCase @Inject constructor() :
         sortingType: RestaurantSortingType
     ): List<RestaurantListItemType> {
         val headerSection = itemList.find { it is RestaurantHeaderUIModel }
-        val emptySection = itemList.find {it is RestaurantSectionEmptyUIModel}
+        val emptySection = itemList.find {it is RestaurantSectionEmptyUIModel }
         val sortedList: ArrayList<RestaurantListItemType> = ArrayList(itemList.filterIsInstance<RestaurantUIModel>().let {
             when (sortingType) {
                 BEST_MATCH -> {

@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.bkarakoca.fooddeliveryapp.BR
 import com.bkarakoca.fooddeliveryapp.internal.extension.observeNonNull
 import com.bkarakoca.fooddeliveryapp.internal.extension.showPopup
+import com.bkarakoca.fooddeliveryapp.internal.util.lazyThreadSafetyNone
 import com.bkarakoca.fooddeliveryapp.navigation.NavigationCommand
 import java.lang.reflect.ParameterizedType
 
@@ -33,7 +34,6 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> :
         return@lazyThreadSafetyNone ViewModelProvider(this)[persistentViewModelClass]
     }
 
-    // Do nothing in here. Child classes should implement when necessary
     abstract fun initialize()
 
     abstract fun setListeners()

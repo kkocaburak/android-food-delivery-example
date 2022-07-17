@@ -2,7 +2,7 @@ package com.bkarakoca.fooddeliveryapp.data.service.local.restaurant
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 
 @Database(
     entities = [RestaurantUIModel::class],
