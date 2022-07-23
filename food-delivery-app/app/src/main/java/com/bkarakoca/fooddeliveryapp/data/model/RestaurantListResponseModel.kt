@@ -18,6 +18,17 @@ data class RestaurantModel(
     val sortingValues: RestaurantSortingValues? = null,
 )
 
+data class RestaurantSortingValues(
+    val bestMatch: Double? = null,
+    val newest: Double? = null,
+    val ratingAverage: Double? = null,
+    val distance: Int? = null,
+    val popularity: Double? = null,
+    val averageProductPrice: Int? = null,
+    val deliveryCosts: Int? = null,
+    val minCost: Int? = null,
+)
+
 fun RestaurantModel.getRestaurantImageResId(): Int {
     return restaurantType?.let { type ->
         RestaurantImageType.getImageResIdFromType(type)
@@ -74,14 +85,3 @@ fun RestaurantModel.getMinimumCostText(): String {
 fun RestaurantModel.getMinimumCostValue(): Double {
     return ((sortingValues?. minCost?.toDouble() ?: 0.0) / 100.0)
 }
-
-data class RestaurantSortingValues(
-    val bestMatch: Double? = null,
-    val newest: Double? = null,
-    val ratingAverage: Double? = null,
-    val distance: Int? = null,
-    val popularity: Double? = null,
-    val averageProductPrice: Int? = null,
-    val deliveryCosts: Int? = null,
-    val minCost: Int? = null,
-)

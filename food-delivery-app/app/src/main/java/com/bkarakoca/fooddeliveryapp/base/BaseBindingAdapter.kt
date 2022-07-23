@@ -7,19 +7,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 
 abstract class BaseBindingAdapter<T : ListAdapterItem>(
-    diffCallback: DiffUtil.ItemCallback<T> = ListAdapterItemDiffCallback(),
-    var currentSelected: T? = null
+    diffCallback: DiffUtil.ItemCallback<T> = ListAdapterItemDiffCallback()
 ) : ListAdapter<T, BaseBindingViewHolder<T>>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseBindingViewHolder<T> {
-        val holder = BaseBindingViewHolder(
+        return BaseBindingViewHolder(
             DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context), getItem(viewType).layoutId, parent, false
-            ),
-            currentSelected
+                LayoutInflater.from(parent.context),
+                getItem(viewType).layoutId,
+                parent,
+                false
+            )
         )
-        holder.viewType = viewType
-        return holder
     }
 
     override fun onBindViewHolder(holder: BaseBindingViewHolder<T>, position: Int) {

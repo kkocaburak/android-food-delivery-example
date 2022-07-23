@@ -22,9 +22,7 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
     }
 
     private fun initRecyclerView() {
-        binder.recyclerviewRestaurant.apply {
-            adapter = restaurantBindingAdapter
-        }
+        binder.recyclerviewRestaurant.adapter = restaurantBindingAdapter
     }
 
     override fun setListeners() {
@@ -92,11 +90,9 @@ class FRRestaurantList : BaseFragment<FRRestaurantListVM, FragmentRestaurantList
 
     override fun setReceivers() {
         observe(viewModel.filteredRestaurantListUIModel) { restaurantList ->
-            restaurantList?.let {
-                binder.recyclerviewRestaurant.adapter = restaurantBindingAdapter.apply {
-                    submitList(null)
-                    submitList(it.restaurantItemList)
-                }
+            binder.recyclerviewRestaurant.adapter = restaurantBindingAdapter.apply {
+                submitList(null)
+                submitList(restaurantList.restaurantItemList)
             }
         }
     }

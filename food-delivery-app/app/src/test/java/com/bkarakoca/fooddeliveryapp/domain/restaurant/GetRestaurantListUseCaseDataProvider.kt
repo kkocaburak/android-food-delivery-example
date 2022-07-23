@@ -2,6 +2,9 @@ package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.*
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantHeaderUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantListItemType
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 
 class GetRestaurantListUseCaseDataProvider {
 

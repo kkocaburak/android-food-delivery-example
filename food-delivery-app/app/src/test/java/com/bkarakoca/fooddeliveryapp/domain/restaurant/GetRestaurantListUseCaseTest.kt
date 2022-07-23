@@ -1,10 +1,10 @@
 package com.bkarakoca.fooddeliveryapp.domain.restaurant
 
 import com.bkarakoca.fooddeliveryapp.data.repository.restaurant.RestaurantRepositoryImpl
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantHeaderUIModel
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantSectionEmptyUIModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantStatusType
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantHeaderUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantSectionEmptyUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import com.bkarakoca.fooddeliveryapp.internal.util.ResourceProvider
 import io.mockk.MockKAnnotations
 import io.mockk.every

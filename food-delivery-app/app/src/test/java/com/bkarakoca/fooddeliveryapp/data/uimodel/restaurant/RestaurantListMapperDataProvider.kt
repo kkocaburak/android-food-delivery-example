@@ -2,6 +2,7 @@ package com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant
 
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.data.model.*
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 
 class RestaurantListMapperDataProvider {
     fun getResponseModel(): RestaurantListResponseModel {

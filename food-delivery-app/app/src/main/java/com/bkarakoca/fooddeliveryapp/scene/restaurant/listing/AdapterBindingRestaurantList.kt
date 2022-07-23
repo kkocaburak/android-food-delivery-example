@@ -5,9 +5,9 @@ import android.graphics.ColorMatrixColorFilter
 import com.bkarakoca.fooddeliveryapp.R
 import com.bkarakoca.fooddeliveryapp.base.BaseBindingAdapter
 import com.bkarakoca.fooddeliveryapp.base.BaseBindingViewHolder
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListItemType
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.isRestaurantClosed
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantListItemType
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.isRestaurantClosed
 import com.bkarakoca.fooddeliveryapp.databinding.ItemRestaurantBinding
 import javax.inject.Inject
 

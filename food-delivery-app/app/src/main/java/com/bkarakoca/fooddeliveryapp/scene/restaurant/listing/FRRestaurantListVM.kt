@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.bkarakoca.fooddeliveryapp.base.BaseViewModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListUIModel
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantSortingType
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.GetRestaurantListUseCase
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.HandleRestaurantFavoriteUseCase
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.SortRestaurantsUseCase

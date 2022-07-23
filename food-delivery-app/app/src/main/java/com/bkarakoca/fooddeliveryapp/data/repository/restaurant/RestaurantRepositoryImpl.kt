@@ -1,9 +1,8 @@
 package com.bkarakoca.fooddeliveryapp.data.repository.restaurant
 
-import com.bkarakoca.fooddeliveryapp.data.model.RestaurantListResponseModel
 import com.bkarakoca.fooddeliveryapp.data.service.local.restaurant.RestaurantDataSource
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantListMapper
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
@@ -12,10 +11,7 @@ class RestaurantRepositoryImpl @Inject constructor(
 ) : RestaurantRepository {
 
     override fun fetchRestaurantListFromLocal(): List<RestaurantUIModel> {
-        return responseToUI(restaurantDataSource.fetchRestaurantListFromLocal())
-    }
-
-    private fun responseToUI(responseModel: RestaurantListResponseModel): List<RestaurantUIModel> {
+        val responseModel = restaurantDataSource.fetchRestaurantListFromLocal()
         return restaurantListMapper.mapResponseToUIModel(responseModel)
     }
 

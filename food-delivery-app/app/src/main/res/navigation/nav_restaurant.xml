@@ -14,7 +14,7 @@
 
             <argument
                 android:name="restaurantUIModel"
-                app:argType="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel" />
+                app:argType="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel" />
         </action>
     </fragment>
     <fragment
@@ -23,6 +23,6 @@
         android:label="FRRestaurantDetail">
         <argument
             android:name="restaurantUIModel"
-            app:argType="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel" />
+            app:argType="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel" />
     </fragment>
 </navigation>

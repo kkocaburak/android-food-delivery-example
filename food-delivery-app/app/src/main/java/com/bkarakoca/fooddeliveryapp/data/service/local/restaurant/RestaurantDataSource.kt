@@ -1,7 +1,7 @@
 package com.bkarakoca.fooddeliveryapp.data.service.local.restaurant
 
 import com.bkarakoca.fooddeliveryapp.data.model.RestaurantListResponseModel
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import com.bkarakoca.fooddeliveryapp.internal.util.ResourceProvider
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -17,7 +17,6 @@ class RestaurantDataSource @Inject constructor(
         try {
             jsonString = resourceProvider.getAsset("restaurant_list.json")
         } catch (ioException: IOException) {
-            // TODO : catch
             println(ioException.message)
         }
 

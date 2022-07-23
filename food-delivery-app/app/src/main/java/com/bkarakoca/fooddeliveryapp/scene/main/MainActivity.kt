@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
+    // You can use this method for navigating from Splash Activity
     companion object {
         fun getStartIntent(context: Context) = Intent(context, MainActivity::class.java)
     }

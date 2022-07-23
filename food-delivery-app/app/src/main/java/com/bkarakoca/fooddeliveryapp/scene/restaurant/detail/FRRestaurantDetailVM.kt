@@ -2,7 +2,7 @@ package com.bkarakoca.fooddeliveryapp.scene.restaurant.detail
 
 import androidx.lifecycle.MutableLiveData
 import com.bkarakoca.fooddeliveryapp.base.BaseViewModel
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

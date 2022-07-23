@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantHeaderUIModel" />
+            type="com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantHeaderUIModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
