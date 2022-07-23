@@ -1,7 +1,7 @@
 package com.bkarakoca.fooddeliveryapp.data.service.local.restaurant
 
 import androidx.room.*
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 
 @Dao
 interface RestaurantDAO {

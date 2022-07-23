@@ -3,7 +3,7 @@ package com.bkarakoca.fooddeliveryapp.scene.restaurant.listing
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantSortingType
 import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantStatusType
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.GetRestaurantListUseCase
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.HandleRestaurantFavoriteUseCase
 import com.bkarakoca.fooddeliveryapp.domain.restaurant.SortRestaurantsUseCase
@@ -137,7 +137,6 @@ class FRRestaurantListVMTest {
 
         delay(200L)
         // then
-        Assert.assertTrue(viewModel.filteredRestaurantListUIModel.value != dataProvider.getRestaurantList())
         val restaurantUIModel = viewModel.filteredRestaurantListUIModel.value?.restaurantItemList?.get(1)
         if (restaurantUIModel is RestaurantUIModel) {
             Assert.assertTrue(restaurantUIModel.id == 1L)

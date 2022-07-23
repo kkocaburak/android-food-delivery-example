@@ -1,6 +1,6 @@
 package com.bkarakoca.fooddeliveryapp.data.repository.restaurant
 
-import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.RestaurantUIModel
+import com.bkarakoca.fooddeliveryapp.data.uimodel.restaurant.listitem.RestaurantUIModel
 
 interface RestaurantRepository {
 
